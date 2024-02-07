@@ -11,6 +11,7 @@
 		22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3C2B72FC4E00EBAD6C /* ContentView.swift */; };
 		22405C3F2B72FC4F00EBAD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */; };
 		22405C422B72FC4F00EBAD6C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C412B72FC4F00EBAD6C /* Preview Assets.xcassets */; };
+		22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C482B73855F00EBAD6C /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		22405C3C2B72FC4E00EBAD6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22405C412B72FC4F00EBAD6C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22405C482B73855F00EBAD6C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,12 @@
 			children = (
 				22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */,
 				22405C3C2B72FC4E00EBAD6C /* ContentView.swift */,
+				22405C482B73855F00EBAD6C /* Coordinator.swift */,
+				22405C4A2B73858300EBAD6C /* Entities */,
+				22405C4B2B73858F00EBAD6C /* Features */,
+				22405C4C2B73859400EBAD6C /* UseCases */,
+				22405C4D2B7385A100EBAD6C /* Data */,
+				22405C4E2B7385A500EBAD6C /* NetworkClient */,
 				22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */,
 				22405C402B72FC4F00EBAD6C /* Preview Content */,
 			);
@@ -65,6 +73,41 @@
 				22405C412B72FC4F00EBAD6C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22405C4A2B73858300EBAD6C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		22405C4B2B73858F00EBAD6C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		22405C4C2B73859400EBAD6C /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		22405C4D2B7385A100EBAD6C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		22405C4E2B7385A500EBAD6C /* NetworkClient */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkClient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +182,7 @@
 			files = (
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
 				22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */,
+				22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
