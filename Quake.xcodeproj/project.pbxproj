@@ -12,6 +12,11 @@
 		22405C3F2B72FC4F00EBAD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */; };
 		22405C422B72FC4F00EBAD6C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C412B72FC4F00EBAD6C /* Preview Assets.xcassets */; };
 		22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C482B73855F00EBAD6C /* Coordinator.swift */; };
+		22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C4F2B73877A00EBAD6C /* APIResponse.swift */; };
+		22405C522B73879600EBAD6C /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C512B73879600EBAD6C /* Feature.swift */; };
+		22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C552B738DD700EBAD6C /* NetworkClient.swift */; };
+		22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C572B738E8300EBAD6C /* NetworkClientError.swift */; };
+		22405C5A2B738EA200EBAD6C /* URLSessionNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +26,11 @@
 		22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22405C412B72FC4F00EBAD6C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22405C482B73855F00EBAD6C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		22405C4F2B73877A00EBAD6C /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		22405C512B73879600EBAD6C /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		22405C552B738DD700EBAD6C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		22405C572B738E8300EBAD6C /* NetworkClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientError.swift; sourceTree = "<group>"; };
+		22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +88,8 @@
 		22405C4A2B73858300EBAD6C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				22405C4F2B73877A00EBAD6C /* APIResponse.swift */,
+				22405C512B73879600EBAD6C /* Feature.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -106,6 +118,9 @@
 		22405C4E2B7385A500EBAD6C /* NetworkClient */ = {
 			isa = PBXGroup;
 			children = (
+				22405C552B738DD700EBAD6C /* NetworkClient.swift */,
+				22405C572B738E8300EBAD6C /* NetworkClientError.swift */,
+				22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */,
 			);
 			path = NetworkClient;
 			sourceTree = "<group>";
@@ -180,9 +195,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22405C5A2B738EA200EBAD6C /* URLSessionNetworkClient.swift in Sources */,
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
+				22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */,
+				22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */,
+				22405C522B73879600EBAD6C /* Feature.swift in Sources */,
 				22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */,
 				22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */,
+				22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
