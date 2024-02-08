@@ -29,6 +29,7 @@
 		22405C712B7564F800EBAD6C /* GetTsunamiValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C702B7564F800EBAD6C /* GetTsunamiValueFormatter.swift */; };
 		22405C742B75653B00EBAD6C /* FeatureToEarthquakeModelMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C732B75653B00EBAD6C /* FeatureToEarthquakeModelMapper.swift */; };
 		22405C762B75658B00EBAD6C /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C752B75658B00EBAD6C /* Double.swift */; };
+		22405C782B75671000EBAD6C /* EarthquakeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C772B75671000EBAD6C /* EarthquakeModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		22405C702B7564F800EBAD6C /* GetTsunamiValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTsunamiValueFormatter.swift; sourceTree = "<group>"; };
 		22405C732B75653B00EBAD6C /* FeatureToEarthquakeModelMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureToEarthquakeModelMapper.swift; sourceTree = "<group>"; };
 		22405C752B75658B00EBAD6C /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		22405C772B75671000EBAD6C /* EarthquakeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				22405C4F2B73877A00EBAD6C /* APIResponse.swift */,
 				22405C512B73879600EBAD6C /* Feature.swift */,
+				22405C772B75671000EBAD6C /* EarthquakeModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */,
 				22405C762B75658B00EBAD6C /* Double.swift in Sources */,
 				22405C712B7564F800EBAD6C /* GetTsunamiValueFormatter.swift in Sources */,
+				22405C782B75671000EBAD6C /* EarthquakeModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
