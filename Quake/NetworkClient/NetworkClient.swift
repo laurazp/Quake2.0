@@ -8,5 +8,5 @@
 
 protocol NetworkClient {
     
-    func get/*<Feature: Decodable>*/(url: String) async throws -> Feature
+    func get(url: String) async throws -> APIResponse
 }

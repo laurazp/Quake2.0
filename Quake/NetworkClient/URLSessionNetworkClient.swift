@@ -8,7 +8,7 @@
 import Foundation
 
 class URLSessionNetworkClient: NetworkClient {
-    func get/*<Feature: Decodable>*/(url: String) async throws -> Feature {
+    func get(url: String) async throws -> APIResponse {
         
         guard let url = URL(string: url) else {
             throw NetworkClientError.badUrl
@@ -16,6 +16,6 @@ class URLSessionNetworkClient: NetworkClient {
         
         let data = try await URLSession.shared.data(from: url).0
         
-        return try JSONDecoder().decode(Feature.self, from: data)
+        return try JSONDecoder().decode(APIResponse.self, from: data)
     }
 }

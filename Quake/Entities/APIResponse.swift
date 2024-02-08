@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Response: Decodable {
+struct APIResponse: Decodable {
     let features: [Feature]
 }
