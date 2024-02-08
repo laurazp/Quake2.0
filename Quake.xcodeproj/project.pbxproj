@@ -17,6 +17,11 @@
 		22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C552B738DD700EBAD6C /* NetworkClient.swift */; };
 		22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C572B738E8300EBAD6C /* NetworkClientError.swift */; };
 		22405C5A2B738EA200EBAD6C /* URLSessionNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */; };
+		22405C5C2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C5B2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift */; };
+		22405C5E2B73911800EBAD6C /* GetTimeRangeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C5D2B73911800EBAD6C /* GetTimeRangeUseCase.swift */; };
+		22405C612B7391B100EBAD6C /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C602B7391B100EBAD6C /* Date.swift */; };
+		22405C632B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C622B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift */; };
+		22405C652B73923C00EBAD6C /* UnitsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C642B73923C00EBAD6C /* UnitsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		22405C552B738DD700EBAD6C /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		22405C572B738E8300EBAD6C /* NetworkClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientError.swift; sourceTree = "<group>"; };
 		22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionNetworkClient.swift; sourceTree = "<group>"; };
+		22405C5B2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetEarthquakesUseCase.swift; sourceTree = "<group>"; };
+		22405C5D2B73911800EBAD6C /* GetTimeRangeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeRangeUseCase.swift; sourceTree = "<group>"; };
+		22405C602B7391B100EBAD6C /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		22405C622B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMagnitudeColorUseCase.swift; sourceTree = "<group>"; };
+		22405C642B73923C00EBAD6C /* UnitsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +81,7 @@
 				22405C4C2B73859400EBAD6C /* UseCases */,
 				22405C4D2B7385A100EBAD6C /* Data */,
 				22405C4E2B7385A500EBAD6C /* NetworkClient */,
+				22405C5F2B73917F00EBAD6C /* Extensions */,
 				22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */,
 				22405C402B72FC4F00EBAD6C /* Preview Content */,
 			);
@@ -104,6 +115,10 @@
 		22405C4C2B73859400EBAD6C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				22405C5B2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift */,
+				22405C5D2B73911800EBAD6C /* GetTimeRangeUseCase.swift */,
+				22405C622B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift */,
+				22405C642B73923C00EBAD6C /* UnitsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -123,6 +138,14 @@
 				22405C592B738EA200EBAD6C /* URLSessionNetworkClient.swift */,
 			);
 			path = NetworkClient;
+			sourceTree = "<group>";
+		};
+		22405C5F2B73917F00EBAD6C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22405C602B7391B100EBAD6C /* Date.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,9 +221,14 @@
 				22405C5A2B738EA200EBAD6C /* URLSessionNetworkClient.swift in Sources */,
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
 				22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */,
+				22405C632B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift in Sources */,
 				22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */,
 				22405C522B73879600EBAD6C /* Feature.swift in Sources */,
+				22405C5C2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift in Sources */,
 				22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */,
+				22405C652B73923C00EBAD6C /* UnitsUseCase.swift in Sources */,
+				22405C5E2B73911800EBAD6C /* GetTimeRangeUseCase.swift in Sources */,
+				22405C612B7391B100EBAD6C /* Date.swift in Sources */,
 				22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */,
 				22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */,
 			);
