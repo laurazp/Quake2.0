@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct QuakeApp: App {
+    let coordinator = Coordinator()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(coordinator)
         }
     }
 }
