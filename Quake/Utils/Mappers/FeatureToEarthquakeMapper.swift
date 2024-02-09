@@ -1,5 +1,5 @@
 //
-//  FeatureToEarthquakeModelMapper.swift
+//  FeatureToEarthquakeMapper.swift
 //  Quake
 //
 //  Created by Laura Zafra Prat on 8/2/24.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct FeatureToEarthquakeModelMapper {
+struct FeatureToEarthquakeMapper {
     private let getSimplifiedTitleFormatter = GetSimplifiedTitleFormatter()
     private let getFormattedCoordsFormatter = GetFormattedCoordsFormatter()
     private let getTsunamiValueFormatter = GetTsunamiValueFormatter()
     private let getDateFormatter = GetDateFormatter()
     private let unitsUseCase = UnitsUseCase()
     
-    func map(from feature: Feature) -> EarthquakeModel {
-        EarthquakeModel(fullTitle: feature.properties.title ?? "Unknown",
+    func map(from feature: Feature) -> Earthquake {
+        Earthquake(fullTitle: feature.properties.title ?? "Unknown",
                         simplifiedTitle: getSimplifiedTitleFormatter.getSimplifiedTitle(titleWithoutFormat: feature.properties.title ?? "Unknown", place: feature.properties.place ?? "Unknown"),
                         place: feature.properties.place ?? "Unknown",
                         formattedCoords: getFormattedCoordsFormatter.getFormattedCoords(actualCoords: feature.geometry.coordinates),
