@@ -38,6 +38,8 @@
 		22405C8C2B7640B500EBAD6C /* EarthquakeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C8B2B7640B500EBAD6C /* EarthquakeItemView.swift */; };
 		22405C8E2B76481200EBAD6C /* EarthquakeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C8D2B76481200EBAD6C /* EarthquakeDetailView.swift */; };
 		22405C912B76590900EBAD6C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C902B76590900EBAD6C /* MainView.swift */; };
+		22405C932B79337D00EBAD6C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C922B79337D00EBAD6C /* MapView.swift */; };
+		22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C942B7933C300EBAD6C /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +75,8 @@
 		22405C8B2B7640B500EBAD6C /* EarthquakeItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeItemView.swift; sourceTree = "<group>"; };
 		22405C8D2B76481200EBAD6C /* EarthquakeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthquakeDetailView.swift; sourceTree = "<group>"; };
 		22405C902B76590900EBAD6C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		22405C922B79337D00EBAD6C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		22405C942B7933C300EBAD6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +251,7 @@
 		22405C802B759B7800EBAD6C /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				22405C922B79337D00EBAD6C /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 		22405C812B759B7E00EBAD6C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				22405C942B7933C300EBAD6C /* SettingsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -369,6 +375,7 @@
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
 				22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */,
 				22405C6B2B75648900EBAD6C /* GetDateFormatter.swift in Sources */,
+				22405C932B79337D00EBAD6C /* MapView.swift in Sources */,
 				22405C632B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift in Sources */,
 				22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */,
 				22405C522B73879600EBAD6C /* Feature.swift in Sources */,
@@ -390,6 +397,7 @@
 				22405C912B76590900EBAD6C /* MainView.swift in Sources */,
 				22405C7E2B756A0200EBAD6C /* EarthquakesRemoteService.swift in Sources */,
 				22405C782B75671000EBAD6C /* Earthquake.swift in Sources */,
+				22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */,
 				22405C8C2B7640B500EBAD6C /* EarthquakeItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
