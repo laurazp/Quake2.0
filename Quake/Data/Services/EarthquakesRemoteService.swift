@@ -10,7 +10,7 @@ import Foundation
 struct EarthquakesRemoteService {
     
     let networkClient: URLSessionNetworkClient
-    let featureToEarthquakeModelMapper = FeatureToEarthquakeModelMapper()
+    let featureToEarthquakeModelMapper = FeatureToEarthquakeMapper()
     
     //let offset = 1
     enum Constants {
@@ -21,7 +21,7 @@ struct EarthquakesRemoteService {
         self.networkClient = networkClient
     }
     
-    func getEarthquakes(startTime: String, endTime: String, offset: Int, pageSize: Int) async throws -> [EarthquakeModel] {
+    func getEarthquakes(startTime: String, endTime: String, offset: Int, pageSize: Int) async throws -> [Earthquake] {
         
         let actualOffset = offset
         let selectedPageSize = getPageSize(pageSize: pageSize)
@@ -30,7 +30,7 @@ struct EarthquakesRemoteService {
         
         let response: APIResponse = try await networkClient.get(url: urlString)
         
-        var earthquakes = [EarthquakeModel]()
+        var earthquakes = [Earthquake]()
         for feature in response.features {
             earthquakes.append(featureToEarthquakeModelMapper.map(from: feature))
         }

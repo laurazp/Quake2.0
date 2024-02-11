@@ -14,7 +14,8 @@ struct EarthquakesRepository {
         self.remoteService = remoteService
     }
     
-    func getEarthquakes(startTime: String, endTime: String, offset: Int, pageSize: Int) async throws -> [EarthquakeModel] {
+    func getEarthquakes(startTime: String, endTime: String, offset: Int, pageSize: Int) async throws -> [Earthquake] {
+        
         do {
             return try await remoteService.getEarthquakes(startTime: startTime, endTime: endTime, offset: offset, pageSize: pageSize)
         } catch(let error) {
