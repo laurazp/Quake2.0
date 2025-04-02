@@ -7,25 +7,29 @@
 
 import Foundation
 
-typealias GetEarthquakesResult = ([Feature]) -> ()
-private let dateFormatterGet = DateFormatter()
+//typealias GetEarthquakesResult = ([Feature]) -> ()
+//private let dateFormatterGet = DateFormatter()
 
 struct GetEarthquakesUseCase {
     private let earthquakesRepository: EarthquakesRepository
     private let getTimeRangeUseCase = GetTimeRangeUseCase()
     
-    func getLatestEarthquakes(days: Int = 30, offset: Int, pageSize: Int, completion: @escaping GetEarthquakesResult) async throws {
+    init(earthquakesRepository: EarthquakesRepository) {
+            self.earthquakesRepository = earthquakesRepository
+        }
+    
+    func getLatestEarthquakes(days: Int = 30, offset: Int, pageSize: Int/*, completion: @escaping GetEarthquakesResult*/) async throws -> [Earthquake] {
         let timeRange = getTimeRangeUseCase.getTimeRange(days: days)
-        try await earthquakesRepository.getEarthquakes(startTime: timeRange.start,
+        return try await earthquakesRepository.getEarthquakes(startTime: timeRange.start,
                               endTime: timeRange.end,
                               offset: offset,
                               pageSize: pageSize/*,
                               completion: completion*/)
     }
     
-    func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int, completion: @escaping GetEarthquakesResult) async throws {
+    func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int/*, completion: @escaping GetEarthquakesResult*/) async throws -> [Earthquake] {
         let dateRange = getTimeRangeUseCase.getDateRangeFromDates(startDate: startDate, endDate: endDate)
-        try await earthquakesRepository.getEarthquakes(startTime: dateRange.start,
+        return try await earthquakesRepository.getEarthquakes(startTime: dateRange.start,
                               endTime: dateRange.end,
                               offset: offset,
                               pageSize: pageSize/*,
