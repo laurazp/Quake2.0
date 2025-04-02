@@ -19,7 +19,8 @@ struct EarthquakeItemView: View {
                 ZStack {
                     NavigationLink(destination: EarthquakeDetailView(earthquake: earthquake)) {
                         EmptyView()
-                    }.opacity(0.0)
+                    }
+                    .opacity(0.0)
                     
                     VStack(alignment: .leading) {
                         ForEach([
@@ -42,10 +43,10 @@ struct EarthquakeItemView: View {
             },
             label: {
                 HStack (alignment: VerticalAlignment.center, spacing: 12) {
-                    Text(earthquake.magnitude)
+                    Text(earthquake.formattedMagnitude)
                         .font(.title2)
                         .fontWeight(.bold)
-                        .foregroundColor(Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: Double(earthquake.magnitude)!)))
+                        .foregroundColor(Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)))
                     
                     Text(earthquake.simplifiedTitle)
                         .font(.title3)
