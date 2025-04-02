@@ -40,6 +40,7 @@
 		22405C912B76590900EBAD6C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C902B76590900EBAD6C /* MainView.swift */; };
 		22405C932B79337D00EBAD6C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C922B79337D00EBAD6C /* MapView.swift */; };
 		22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C942B7933C300EBAD6C /* SettingsView.swift */; };
+		22405C972B7AB67900EBAD6C /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C962B7AB67900EBAD6C /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		22405C902B76590900EBAD6C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		22405C922B79337D00EBAD6C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		22405C942B7933C300EBAD6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		22405C962B7AB67900EBAD6C /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				22405C922B79337D00EBAD6C /* MapView.swift */,
+				22405C962B7AB67900EBAD6C /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				22405C612B7391B100EBAD6C /* Date.swift in Sources */,
 				22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */,
 				22405C672B7562E100EBAD6C /* UserDefaults.swift in Sources */,
+				22405C972B7AB67900EBAD6C /* MapViewModel.swift in Sources */,
 				22405C562B738DD700EBAD6C /* NetworkClient.swift in Sources */,
 				22405C762B75658B00EBAD6C /* Double.swift in Sources */,
 				22405C712B7564F800EBAD6C /* GetTsunamiValueFormatter.swift in Sources */,

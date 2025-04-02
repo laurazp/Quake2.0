@@ -36,7 +36,7 @@ class Coordinator: ObservableObject {
     
     // MARK: - MapView
     func makeMapView() -> MapView {
-        MapView(/*viewModel: makeMapViewModel()*/)
+        MapView(viewModel: makeMapViewModel())
     }
     
     // MARK: - SettingsView
@@ -47,5 +47,9 @@ class Coordinator: ObservableObject {
     // MARK: Viewmodels
     private func makeEarthquakesViewModel() -> EarthquakesViewModel {
         return EarthquakesViewModel(getEarthquakesUseCase: getEarthquakesUseCase)
+    }
+    
+    private func makeMapViewModel() -> MapViewModel {
+        return MapViewModel(getEarthquakesUseCase: getEarthquakesUseCase)
     }
 }
