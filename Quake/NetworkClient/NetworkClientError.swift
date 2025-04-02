@@ -9,4 +9,6 @@ import Foundation
 
 enum NetworkClientError: Error {
     case badUrl
+    case invalidResponse
+    case decodingError(Error)
 }

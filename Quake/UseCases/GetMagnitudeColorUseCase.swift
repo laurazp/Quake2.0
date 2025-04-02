@@ -5,14 +5,14 @@
 //  Created by Laura Zafra Prat on 7/2/24.
 //
 
-import Foundation
 import UIKit
+import SwiftUI
 
 struct GetMagnitudeColorUseCase {
     
-    func getMagnitudeColor(magnitude: Double) -> UIColor {
+    func getMagnitudeColor(magnitude: Double) -> Color {
         var magnitudeLevel: Int
-        var magnitudeColor: UIColor
+        var magnitudeColor: Color
         
         if magnitude < 3 {
             magnitudeLevel = 1
@@ -26,7 +26,7 @@ struct GetMagnitudeColorUseCase {
         
         switch magnitudeLevel {
         case 1:
-            magnitudeColor = .systemGreen
+            magnitudeColor = .green
         case 2:
             magnitudeColor = .orange
         case 3:

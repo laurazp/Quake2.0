@@ -24,7 +24,9 @@ struct FeatureToEarthquakeMapper {
                         date: getDateFormatter.formatDate(dateToFormat: feature.properties.time ?? 0000),
                         originalDate: getDateFormatter.formatIntToDate(dateToFormat: feature.properties.time ?? 0),
                         tsunami: getTsunamiValueFormatter.getTsunamiValue(tsunami: feature.properties.tsunami ?? 0),
-                        magnitude: String(format: "%.1f", feature.properties.mag ?? 0))
+                        formattedMagnitude: String(format: "%.1f", feature.properties.mag ?? 0),
+                        originalMagnitude: feature.properties.mag ?? 0
+        )
     }
     
     func depthInSelectedUnits(feature: Feature) -> Measurement<UnitLength> {

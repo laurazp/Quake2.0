@@ -18,7 +18,8 @@ struct Earthquake: Identifiable {
     let date: String
     let originalDate: Date
     let tsunami: String
-    let magnitude: String
+    let formattedMagnitude: String
+    let originalMagnitude: Double
     
     static var example: Earthquake {
         Earthquake(
@@ -31,7 +32,8 @@ struct Earthquake: Identifiable {
             date: "23/01/2024",
             originalDate: Date(timeIntervalSince1970: 1388619763623 / 1000.0),
             tsunami: "No",
-            magnitude: "1.4"
+            formattedMagnitude: "1.4",
+            originalMagnitude: 1.4
 
         )
     }
