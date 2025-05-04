@@ -18,8 +18,9 @@ struct EarthquakesView: View {
     var body: some View {
         NavigationStack {
             if viewModel.isLoading {
-                ProgressView()
+                QuakeLoader()
             } else {
+                //TODO: Paginate earthquakes
                 List(viewModel.earthquakes) { earthquake in
                     createRow(for: earthquake)
                         .frame(maxWidth: .infinity)
