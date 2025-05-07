@@ -24,6 +24,6 @@ struct Constants {
     }
     
     struct Images {
-        // example: static let icoStar = UIImage(named: "ico_imageName")
+        static let earthquakeMapPinSystemName = "waveform.path.ecg" //pin.fill
     }
 }
