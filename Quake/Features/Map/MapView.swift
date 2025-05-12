@@ -12,7 +12,7 @@ struct MapView: View {
     @StateObject private var viewModel: MapViewModel
     @EnvironmentObject var coordinator: Coordinator
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
-
+    
     @State private var earthquakes: [Earthquake] = []
     @State private var searchResults: [MKMapItem] = []
     @State private var selectedEarthquake: MKMapItem?
@@ -21,15 +21,13 @@ struct MapView: View {
     init(viewModel: MapViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
-
+    
     var body: some View {
         Map(position: $cameraPosition, selection: $selectedEarthquake) {
             ForEach(earthquakes) { earthquake in
                 Marker(
                     earthquake.simplifiedTitle,
-                    //TODO: crear imagen personalizada de terremoto
-                    //pin.fill
-                    systemImage: "waveform.path.ecg",
+                    systemImage: Constants.Images.earthquakeMapPinSystemName,
                     coordinate: getCoordinate(earthquake: earthquake))
                 .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
             }
@@ -54,7 +52,7 @@ struct MapView: View {
                     .background(.blue)
                     .clipShape(.rect(cornerRadius: 10))
                     .padding(.bottom)
-                .padding(.trailing)
+                    .padding(.trailing)
             }
         }
         .onChange(of: searchResults) {
@@ -63,7 +61,7 @@ struct MapView: View {
         //TODO: revisar dialog error y async
         .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
             Task {
-                await fetchEarthquakes()
+                fetchEarthquakes()
             }
         })
     }

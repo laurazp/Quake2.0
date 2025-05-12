@@ -49,7 +49,7 @@ struct SettingsView: View {
                     }
                 }
             }
-            .navigationTitle("settings_settings")
+            .navigationTitle("settings_title")
             .listStyle(InsetGroupedListStyle())
         }
     }

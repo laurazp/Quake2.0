@@ -27,21 +27,22 @@ struct EarthquakeDetailView: View {
                 // EARTHQUAKE PROPERTIES
                 VStack(alignment: .leading, spacing: 16) {
                     ForEach([
-                        ("Place", earthquake.place),
-                        ("Date", earthquake.date),
-                        ("Tsunami", earthquake.tsunami),
-                        ("Coords", earthquake.formattedCoords),
-                        ("Depth", earthquake.depth),
-                        ("Magnitude", earthquake.formattedMagnitude)
-                    ], id: \.0) { title, value in
+                        ("earthquake_place", earthquake.place),
+                        ("earthquake_date", earthquake.date),
+                        ("earthquake_tsunami", earthquake.tsunami),
+                        ("earthquake_coords", earthquake.formattedCoords),
+                        ("earthquake_depth", earthquake.depth),
+                        ("earthquake_magnitude", earthquake.formattedMagnitude)
+                    ], id: \.0) { key, value in
                         HStack {
-                            Text("\(title):")
+                            Text(LocalizedStringKey(key))
                                 .fontWeight(.bold)
                                 .foregroundStyle(.gray)
+                            + Text(":")
                             
                             Text(value)
-                                .foregroundColor(title == "Magnitude" ? Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)) : Color.black)
-                                .fontWeight(title == "Magnitude" ? .bold : .regular)
+                                .foregroundColor(key == "earthquake_magnitude" ? Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)) : Color.black)
+                                .fontWeight(key == "earthquake_magnitude" ? .bold : .regular)
                         }
                     }
                 }

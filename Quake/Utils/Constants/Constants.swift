@@ -33,6 +33,9 @@ struct Constants {
     }
     
     struct Images {
+        static let earthquakesListIcon = "house"
+        static let mapIcon = "map"
+        static let settingsIcon = "wrench.and.screwdriver"
         static let earthquakeMapPinSystemName = "waveform.path.ecg" //pin.fill
         static let unitsSettingsImageName = "option"
         static let locationSettingsImageName = "location"

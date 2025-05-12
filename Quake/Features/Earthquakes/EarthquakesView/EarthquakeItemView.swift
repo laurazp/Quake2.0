@@ -17,53 +17,50 @@ struct EarthquakeItemView: View {
         DisclosureGroup(
             isExpanded: $isExpanded,
             content: {
-//                NavigationStack {
-                    VStack(alignment: .leading, spacing: 16) {
-                        // EARTHQUAKE DETAILS
-                        ForEach([
-                            ("Place", earthquake.place),
-                            ("Date", earthquake.date),
-                            ("Tsunami", earthquake.tsunami),
-                            ("Coords", earthquake.formattedCoords),
-                            ("Depth", earthquake.depth)
-                        ], id: \.0) { title, value in
-                            HStack(alignment: .top) {
-                                Text("\(title):")
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.gray)
-                                
-                                Text(value)
-                            }
+                VStack(alignment: .leading, spacing: 16) {
+                    // EARTHQUAKE DETAILS
+                    ForEach([
+                        ("earthquake_place", earthquake.place),
+                        ("earthquake_date", earthquake.date),
+                        ("earthquake_tsunami", earthquake.tsunami),
+                        ("earthquake_coords", earthquake.formattedCoords),
+                        ("earthquake_depth", earthquake.depth)
+                    ], id: \.0) { key, value in
+                        HStack(alignment: .top) {
+                            Text(LocalizedStringKey(key))
+                                .fontWeight(.bold)
+                                .foregroundStyle(.gray)
+                            + Text(":")
+                            
+                            Text(value)
                         }
-                        
-                        // SEE DETAIL BUTTON
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                navigate = true
-                            }) {
-                                Text("See details")
-                                    .foregroundColor(.teal)
-                                    .underline(false)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal)
-                        
-                        // Invisible NavigationLink
-                        NavigationLink(destination: EarthquakeDetailView(earthquake: earthquake), isActive: $navigate) {
-                            EmptyView()
-                        }
-                        .hidden()
                     }
-                    .padding()
-                    .background(Color.teal.opacity(0.1))
-                    .cornerRadius(8)
-//                }
-//                .padding()
-//                .background(Color.gray.opacity(0.2))
-//                .cornerRadius(8)
+                    
+                    // SEE DETAIL BUTTON
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            navigate = true
+                        }) {
+                            Text("settings_see_details")
+                                .foregroundColor(.teal)
+                                .fontWeight(.semibold)
+                                .underline(false)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
+                    // Invisible NavigationLink
+                    NavigationLink(destination: EarthquakeDetailView(earthquake: earthquake), isActive: $navigate) {
+                        EmptyView()
+                    }
+                    .hidden()
+                }
+                .padding(.top, 22)
+                .padding(. horizontal, 16)
+                .background(Color.teal.opacity(0.1))
+                .cornerRadius(8)
             },
             label: {
                 HStack (alignment: VerticalAlignment.center, spacing: 12) {

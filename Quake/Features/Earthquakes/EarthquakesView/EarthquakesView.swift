@@ -25,7 +25,7 @@ struct EarthquakesView: View {
                     createRow(for: earthquake)
                         .frame(maxWidth: .infinity)
                 }
-                .navigationTitle("Earthquakes")
+                .navigationTitle("earthquakes_title")
                 .listStyle(PlainListStyle())
             }
         }
