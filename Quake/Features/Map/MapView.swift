@@ -46,11 +46,11 @@ struct MapView: View {
                 //TODO: animate center on user location ??
                 cameraPosition = .region(.userRegion)
             } label: {
-                Image(systemName: "paperplane")
+                Image(systemName: Constants.Images.centerLocationIcon)
                     .foregroundStyle(.white)
-                    .padding(8)
+                    .padding(Constants.Design.Dimens.smallMargin)
                     .background(.blue)
-                    .clipShape(.rect(cornerRadius: 10))
+                    .clipShape(.rect(cornerRadius: Constants.Design.Dimens.mediumMargin))
                     .padding(.bottom)
                     .padding(.trailing)
             }

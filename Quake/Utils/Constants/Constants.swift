@@ -19,12 +19,22 @@ struct Constants {
         }
         
         struct Dimens {
+            static let hugeMargin = 32.0
+            static let semiHugeMargin = 26.0
+            static let extraLargeMargin = 22.0
             static let largeMargin = 20.0
+            static let semiLargeMargin = 16.0
             static let mediumMargin = 12.0
+            static let smallMargin = 8.0
+            static let extraSmallMargin = 6.0
             
+            static let mapDetailHeight = 350.0
             static let settingsRowHeight = 38.0
+            static let cardCornerRadius = 8.0
             
             static let imageOpacity = 0.6
+            static let shadowOpacity = 0.2
+            static let detailsCardOpacity = 0.1
         }
         
         struct Styles {
@@ -42,5 +52,6 @@ struct Constants {
         static let infoSettingsImageName = "info"
         static let faqSettingsImageName = "questionmark"
         static let feedbackSettingsImageName = "wave.3.backward"
+        static let centerLocationIcon = "paperplane"
     }
 }

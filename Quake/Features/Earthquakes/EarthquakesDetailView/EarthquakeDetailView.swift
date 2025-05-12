@@ -19,13 +19,13 @@ struct EarthquakeDetailView: View {
         )
         
         ScrollView {
-            VStack(spacing: 32) {
+            VStack(spacing: Constants.Design.Dimens.hugeMargin) {
                 // TITLE
                 Text(earthquake.simplifiedTitle)
                     .font(.title)
                 
                 // EARTHQUAKE PROPERTIES
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: Constants.Design.Dimens.semiLargeMargin) {
                     ForEach([
                         ("earthquake_place", earthquake.place),
                         ("earthquake_date", earthquake.date),
@@ -39,6 +39,8 @@ struct EarthquakeDetailView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.gray)
                             + Text(":")
+                                .fontWeight(.bold)
+                                .foregroundStyle(.gray)
                             
                             Text(value)
                                 .foregroundColor(key == "earthquake_magnitude" ? Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)) : Color.black)
@@ -60,13 +62,17 @@ struct EarthquakeDetailView: View {
                         coordinate: coordinate)
                     .tint(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude))
                 }
-                .frame(height: 350)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: Color.black.opacity(0.2), radius: 6, x: 0, y: 4)
+                .frame(height: Constants.Design.Dimens.mapDetailHeight)
+                .clipShape(RoundedRectangle(cornerRadius: Constants.Design.Dimens.semiLargeMargin))
+                .shadow(color: Color.black.opacity(Constants.Design.Dimens.shadowOpacity), radius: Constants.Design.Dimens.extraSmallMargin, x: 0, y: 4)
                 .padding()
             }
             .frame(maxHeight: .infinity, alignment: .top)
-            .padding(EdgeInsets(top: 26, leading: 6, bottom: 6, trailing: 6))
+            .padding(EdgeInsets(
+                top: Constants.Design.Dimens.semiHugeMargin,
+                leading: Constants.Design.Dimens.extraSmallMargin,
+                bottom: Constants.Design.Dimens.extraSmallMargin,
+                trailing: Constants.Design.Dimens.extraSmallMargin))
         }
     }
 }

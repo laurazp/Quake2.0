@@ -17,7 +17,7 @@ struct EarthquakeItemView: View {
         DisclosureGroup(
             isExpanded: $isExpanded,
             content: {
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: Constants.Design.Dimens.semiLargeMargin) {
                     // EARTHQUAKE DETAILS
                     ForEach([
                         ("earthquake_place", earthquake.place),
@@ -31,6 +31,8 @@ struct EarthquakeItemView: View {
                                 .fontWeight(.bold)
                                 .foregroundStyle(.gray)
                             + Text(":")
+                                .fontWeight(.bold)
+                                .foregroundStyle(.gray)
                             
                             Text(value)
                         }
@@ -57,13 +59,13 @@ struct EarthquakeItemView: View {
                     }
                     .hidden()
                 }
-                .padding(.top, 22)
-                .padding(. horizontal, 16)
-                .background(Color.teal.opacity(0.1))
-                .cornerRadius(8)
+                .padding(.top, Constants.Design.Dimens.extraLargeMargin)
+                .padding(. horizontal, Constants.Design.Dimens.semiLargeMargin)
+                .background(Color.teal.opacity(Constants.Design.Dimens.detailsCardOpacity))
+                .cornerRadius(Constants.Design.Dimens.cardCornerRadius)
             },
             label: {
-                HStack (alignment: VerticalAlignment.center, spacing: 12) {
+                HStack (alignment: VerticalAlignment.center, spacing: Constants.Design.Dimens.mediumMargin) {
                     Text(earthquake.formattedMagnitude)
                         .font(.title2)
                         .fontWeight(.bold)
@@ -74,7 +76,7 @@ struct EarthquakeItemView: View {
                         .foregroundColor(.black)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(6)
+                .padding(Constants.Design.Dimens.extraSmallMargin)
                 .multilineTextAlignment(.center)
             }
         )
