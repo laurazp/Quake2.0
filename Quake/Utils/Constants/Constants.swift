@@ -10,12 +10,21 @@ import UIKit
 struct Constants {
     struct Design {
         struct Colors {
-            static let Blue = UIColor.blue
+            static let Blue = UIColor.systemBlue
             static let DarkGrey = UIColor.darkGray
+            static let Mint = UIColor.systemMint
+            static let Orange = UIColor.orange
+            static let Red = UIColor.red
+            static let Green = UIColor.green
         }
         
         struct Dimens {
+            static let largeMargin = 20.0
+            static let mediumMargin = 12.0
             
+            static let settingsRowHeight = 38.0
+            
+            static let imageOpacity = 0.6
         }
         
         struct Styles {
@@ -25,5 +34,10 @@ struct Constants {
     
     struct Images {
         static let earthquakeMapPinSystemName = "waveform.path.ecg" //pin.fill
+        static let unitsSettingsImageName = "option"
+        static let locationSettingsImageName = "location"
+        static let infoSettingsImageName = "info"
+        static let faqSettingsImageName = "questionmark"
+        static let feedbackSettingsImageName = "wave.3.backward"
     }
 }
