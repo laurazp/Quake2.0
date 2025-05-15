@@ -7,9 +7,46 @@
 
 import SwiftUI
 
+enum LengthUnit: String, CaseIterable, Identifiable {
+    case kilometers = "Kilometers"
+    case miles = "Miles"
+    
+    var id: String { self.rawValue }
+}
+
 struct UnitsView: View {
+    @State private var selectedUnit: LengthUnit = .kilometers
+    
     var body: some View {
-        Text("settings_units")
+        VStack(alignment: .leading) {
+            HStack {
+                Spacer()
+                Text(LocalizedStringKey("settings_units"))
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .frame(alignment: .center)
+                    .padding(.top)
+                Spacer()
+            }
+            
+            VStack(alignment: .leading) {
+                Text("settings_units_length")
+                    .font(.headline)
+                
+                //TODO: Set unit as selected in app
+                Picker("settings_units_length", selection: $selectedUnit) {
+                    ForEach(LengthUnit.allCases) { unit in
+                        Text(unit.rawValue)
+                            .tag(unit)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .padding(.top, 8)
+            }
+            .padding()
+            
+            Spacer()
+        }
     }
 }
 
