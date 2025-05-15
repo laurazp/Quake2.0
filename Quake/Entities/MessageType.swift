@@ -5,13 +5,22 @@
 //  Created by Laura Zafra Prat on 15/5/25.
 //
 
-import Foundation
+import SwiftUI
 
 enum MessageType: String, CaseIterable, Identifiable {
-    case request = "Request"
-    case bugReport = "Bug Report"
-    case question = "Question"
-    case other = "Other"
+    case request
+    case bugReport
+    case question
+    case other
     
     var id: String { self.rawValue }
+    
+    var localizedLabel: LocalizedStringKey {
+        switch self {
+        case .request: return "message_type_request"
+        case .bugReport: return "message_type_bug_report"
+        case .question: return "message_type_question"
+        case .other: return "message_type_other"
+        }
+    }
 }
