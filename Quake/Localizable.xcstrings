@@ -289,6 +289,23 @@
           }
         }
       }
+    },
+    "settings_units_length" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Length"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Longitud"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

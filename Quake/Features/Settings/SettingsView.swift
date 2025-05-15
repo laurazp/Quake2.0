@@ -45,7 +45,7 @@ struct SettingsView: View {
                         for: "settings_feedback",
                         imageName: Constants.Images.feedbackSettingsImageName,
                         imageColor: Constants.Design.Colors.Green) {
-                        FeedbackView()
+                            FeedbackView()
                     }
                 }
             }
