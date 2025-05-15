@@ -19,6 +19,7 @@ struct Constants {
         }
         
         struct Dimens {
+            static let zero = 0.0
             static let hugeMargin = 32.0
             static let semiHugeMargin = 26.0
             static let extraLargeMargin = 22.0
@@ -53,5 +54,7 @@ struct Constants {
         static let faqSettingsImageName = "questionmark"
         static let feedbackSettingsImageName = "wave.3.backward"
         static let centerLocationIcon = "paperplane"
+        static let chevronDownIcon = "chevron.down"
+        static let chevronRightIcon = "chevron.right"
     }
 }

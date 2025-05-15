@@ -13,8 +13,12 @@
 		220B37632DD29D44006916A0 /* LocationServicesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37622DD29D44006916A0 /* LocationServicesView.swift */; };
 		220B37652DD29D66006916A0 /* AppInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37642DD29D66006916A0 /* AppInfoView.swift */; };
 		220B37672DD29D7D006916A0 /* FAQView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37662DD29D7D006916A0 /* FAQView.swift */; };
-		220B37692DD29D90006916A0 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37682DD29D90006916A0 /* FeedbackView.swift */; };
 		220B376B2DD2A03F006916A0 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 220B376A2DD2A03F006916A0 /* Localizable.xcstrings */; };
+		220B37702DD60420006916A0 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B376F2DD60420006916A0 /* FeedbackView.swift */; };
+		220B37732DD60FCC006916A0 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37722DD60FC7006916A0 /* View.swift */; };
+		220B37752DD61116006916A0 /* FeedbackCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37742DD61115006916A0 /* FeedbackCard.swift */; };
+		220B37772DD62833006916A0 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37762DD6282D006916A0 /* MessageType.swift */; };
+		220B37792DD62AE6006916A0 /* LengthUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37782DD62AE0006916A0 /* LengthUnit.swift */; };
 		22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */; };
 		22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3C2B72FC4E00EBAD6C /* ContentView.swift */; };
 		22405C3F2B72FC4F00EBAD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */; };
@@ -59,8 +63,12 @@
 		220B37622DD29D44006916A0 /* LocationServicesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServicesView.swift; sourceTree = "<group>"; };
 		220B37642DD29D66006916A0 /* AppInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoView.swift; sourceTree = "<group>"; };
 		220B37662DD29D7D006916A0 /* FAQView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQView.swift; sourceTree = "<group>"; };
-		220B37682DD29D90006916A0 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		220B376A2DD2A03F006916A0 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		220B376F2DD60420006916A0 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
+		220B37722DD60FC7006916A0 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		220B37742DD61115006916A0 /* FeedbackCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCard.swift; sourceTree = "<group>"; };
+		220B37762DD6282D006916A0 /* MessageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
+		220B37782DD62AE0006916A0 /* LengthUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthUnit.swift; sourceTree = "<group>"; };
 		22405C372B72FC4E00EBAD6C /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeApp.swift; sourceTree = "<group>"; };
 		22405C3C2B72FC4E00EBAD6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -117,7 +125,7 @@
 				220B37622DD29D44006916A0 /* LocationServicesView.swift */,
 				220B37642DD29D66006916A0 /* AppInfoView.swift */,
 				220B37662DD29D7D006916A0 /* FAQView.swift */,
-				220B37682DD29D90006916A0 /* FeedbackView.swift */,
+				220B376F2DD60420006916A0 /* FeedbackView.swift */,
 			);
 			path = Elements;
 			sourceTree = "<group>";
@@ -171,6 +179,8 @@
 		22405C4A2B73858300EBAD6C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				220B37782DD62AE0006916A0 /* LengthUnit.swift */,
+				220B37762DD6282D006916A0 /* MessageType.swift */,
 				22405C4F2B73877A00EBAD6C /* APIResponse.swift */,
 				22405C512B73879600EBAD6C /* Feature.swift */,
 				22405C772B75671000EBAD6C /* Earthquake.swift */,
@@ -222,6 +232,7 @@
 		22405C5F2B73917F00EBAD6C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				220B37722DD60FC7006916A0 /* View.swift */,
 				22405C602B7391B100EBAD6C /* Date.swift */,
 				22405C662B7562E100EBAD6C /* UserDefaults.swift */,
 				22405C752B75658B00EBAD6C /* Double.swift */,
@@ -325,6 +336,7 @@
 			children = (
 				22405C892B763F2E00EBAD6C /* ErrorLoadingListAlertDialog.swift */,
 				220B375B2DBED835006916A0 /* QuakeLoader.swift */,
+				220B37742DD61115006916A0 /* FeedbackCard.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -397,6 +409,8 @@
 				es,
 			);
 			mainGroup = 22405C2E2B72FC4E00EBAD6C;
+			packageReferences = (
+			);
 			productRefGroup = 22405C382B72FC4E00EBAD6C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -429,9 +443,11 @@
 				22405C6F2B7564D200EBAD6C /* GetSimplifiedTitleFormatter.swift in Sources */,
 				22405C742B75653B00EBAD6C /* FeatureToEarthquakeMapper.swift in Sources */,
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
+				220B37792DD62AE6006916A0 /* LengthUnit.swift in Sources */,
 				22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */,
 				22405C6B2B75648900EBAD6C /* GetDateFormatter.swift in Sources */,
 				22405C932B79337D00EBAD6C /* MapView.swift in Sources */,
+				220B37752DD61116006916A0 /* FeedbackCard.swift in Sources */,
 				22405C632B73921F00EBAD6C /* GetMagnitudeColorUseCase.swift in Sources */,
 				22405C582B738E8300EBAD6C /* NetworkClientError.swift in Sources */,
 				220B37672DD29D7D006916A0 /* FAQView.swift in Sources */,
@@ -439,16 +455,18 @@
 				22405C522B73879600EBAD6C /* Feature.swift in Sources */,
 				22405C5C2B738F8C00EBAD6C /* GetEarthquakesUseCase.swift in Sources */,
 				22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */,
+				220B37702DD60420006916A0 /* FeedbackView.swift in Sources */,
 				22405C652B73923C00EBAD6C /* UnitsUseCase.swift in Sources */,
 				22405C872B7639D700EBAD6C /* EarthquakesView.swift in Sources */,
 				22405C5E2B73911800EBAD6C /* GetTimeRangeUseCase.swift in Sources */,
 				220B375C2DBED835006916A0 /* QuakeLoader.swift in Sources */,
 				22405C7C2B75685700EBAD6C /* EarthquakesRepository.swift in Sources */,
 				22405C8A2B763F2E00EBAD6C /* ErrorLoadingListAlertDialog.swift in Sources */,
-				220B37692DD29D90006916A0 /* FeedbackView.swift in Sources */,
 				22405C852B759BC100EBAD6C /* EarthquakesViewModel.swift in Sources */,
+				220B37772DD62833006916A0 /* MessageType.swift in Sources */,
 				22405C8E2B76481200EBAD6C /* EarthquakeDetailView.swift in Sources */,
 				22405C612B7391B100EBAD6C /* Date.swift in Sources */,
+				220B37732DD60FCC006916A0 /* View.swift in Sources */,
 				22405C492B73855F00EBAD6C /* Coordinator.swift in Sources */,
 				22405C672B7562E100EBAD6C /* UserDefaults.swift in Sources */,
 				220B37612DD292B4006916A0 /* UnitsView.swift in Sources */,

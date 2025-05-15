@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-enum LengthUnit: String, CaseIterable, Identifiable {
-    case kilometers = "Kilometers"
-    case miles = "Miles"
-    
-    var id: String { self.rawValue }
-}
-
 struct UnitsView: View {
     @State private var selectedUnit: LengthUnit = .kilometers
     
@@ -36,7 +29,7 @@ struct UnitsView: View {
                 //TODO: Set unit as selected in app
                 Picker("settings_units_length", selection: $selectedUnit) {
                     ForEach(LengthUnit.allCases) { unit in
-                        Text(unit.rawValue)
+                        Text(unit.localizedLabel)
                             .tag(unit)
                     }
                 }
