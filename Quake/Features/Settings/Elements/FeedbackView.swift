@@ -6,16 +6,26 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct FeedbackView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var didTapSend = false
     
+    /// Message variables
     @State private var selectedType: MessageType = .request
     @State private var messageText: String = ""
     
+    /// Image picker variables
+    @State private var showPhotoOptions = false
+    @State private var showImagePicker = false
+    @State private var imagePickerSource: ImagePicker.SourceType = .photoLibrary
+    @State private var selectedImage: UIImage?
+    @State private var showMailView = false
+    
     var body: some View {
         VStack(spacing: Constants.Design.Dimens.zero) {
+            // TITLE
             Text("feedback_send_feedback")
                 .font(.title)
                 .bold()
@@ -65,6 +75,27 @@ struct FeedbackView: View {
                         .foregroundColor(.black.opacity(0.5))
                         .font(.system(size: 14, weight: .semibold))
                 }
+                .onTapGesture {
+                    showPhotoOptions = true
+                }
+                .confirmationDialog("Selecciona una opción", isPresented: $showPhotoOptions, titleVisibility: .visible) {
+                    Button("Abrir cámara") {
+                        imagePickerSource = .camera
+                        showImagePicker = true
+                    }
+                    Button("Elegir desde la galería") {
+                        imagePickerSource = .photoLibrary
+                        showImagePicker = true
+                    }
+                    Button("Cancelar", role: .cancel) {
+                    }
+                }
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(sourceType: imagePickerSource) { image in
+                        selectedImage = image
+                        //TODO: Use image here?
+                    }
+                }
             }
             
             // DEVICE INFO
@@ -82,6 +113,7 @@ struct FeedbackView: View {
             Button(action: {
                 didTapSend = true
                 //TODO: Send mail with all info
+                showMailView = true
             }) {
                 Text("feedback_send_feedback")
                     .frame(maxWidth: .infinity)
@@ -90,6 +122,28 @@ struct FeedbackView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
                     .padding()
+            }
+            .sheet(isPresented: $showMailView) {
+                if MFMailComposeViewController.canSendMail() {
+                    if let image = selectedImage,
+                       let imageData = image.jpegData(compressionQuality: 0.8) {
+                        
+                        MailView(
+                            subject: selectedType.rawValue,
+                            body: messageText,
+                            toRecipients: ["luridevlabs@gmail.com"],
+                            attachment: imageData,
+                            mimeType: "image/jpeg",
+                            fileName: "screenshot.jpg"
+                        )
+                    } else {
+                        Text("Hubo un problema con la imagen adjunta.")
+                            .padding()
+                    }
+                } else {
+                    Text("No se puede enviar correo desde este dispositivo.")
+                        .padding()
+                }
             }
         }
         .navigationBarTitleDisplayMode(.inline)
