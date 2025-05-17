@@ -11,6 +11,12 @@
         }
       }
     },
+    "Abrir cámara" : {
+
+    },
+    "Cancelar" : {
+
+    },
     "device_operating_system_ios" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -142,6 +148,254 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terremotos"
+          }
+        }
+      }
+    },
+    "Elegir desde la galería" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Por qué algunos terremotos son más destructivos aunque no sean tan fuertes?"
+          }
+        }
+      }
+    },
+    "faq_answer_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A negative magnitude means an earthquake that is not felt by humans because it's smaller than those originally chosen for zero magnitude in the Richter scale. That's possible because modern seismographs can detect smaller seismic waves than before."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Una magnitud negativa significa un terremoto que no es percibido por los humanos porque es más pequeño que los originalmente considerados de magnitud cero en la escala de Richter. Esto es posible porque los sismógrafos modernos pueden detectar ondas sísmicas más pequeñas que antes."
+          }
+        }
+      }
+    },
+    "faq_answer_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's the distance from the ground at which the earthquake occurred. If we have a depth of 0km or a negative depth, it's because the earthquake was too shallow and it's so difficult to determine its exact depth (it's possible to have an error of 1-2km when determining the actual depth of an earthquake)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es la distancia desde el suelo a la que se produjo el terremoto. Si la profundidad es de 0 km o negativa, se debe a que el terremoto fue muy superficial y es muy difícil determinar su profundidad exacta (es posible un error de 1 a 2 km al determinar la profundidad real de un terremoto)."
+          }
+        }
+      }
+    },
+    "faq_answer_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No, it is currently not possible to accurately predict when, where, and with what magnitude an earthquake will occur. Science can identify risk zones, but not make exact predictions."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No, actualmente no es posible predecir con precisión cuándo, dónde y con qué magnitud ocurrirá un terremoto. La ciencia puede identificar zonas de riesgo, pero no hacer predicciones exactas."
+          }
+        }
+      }
+    },
+    "faq_answer_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "It's a smaller earthquake that follows the main one in the same area. There may be many aftershocks, and some may be felt quite strongly."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es un terremoto más pequeño que sigue al principal en la misma zona. Puede haber muchas réplicas, y algunas pueden sentirse con fuerza."
+          }
+        }
+      }
+    },
+    "faq_answer_5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Factors such as the depth of the earthquake, proximity to populated areas, soil type, and the quality of buildings influence the level of damage beyond magnitude."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Factores como la profundidad del sismo, la proximidad a áreas pobladas, el tipo de suelo y la calidad de las construcciones influyen en el nivel de daño, más allá de la magnitud."
+          }
+        }
+      }
+    },
+    "faq_answer_6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Because they are close to tectonic plate boundaries, such as the Pacific Ring of Fire, where there is more seismic activity."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porque están cerca de los límites de placas tectónicas, como el \"Cinturón de Fuego del Pacífico\", donde hay más actividad sísmica."
+          }
+        }
+      }
+    },
+    "faq_answer_7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data comes from official sources such as the USGS, EMSC, or other reliable seismological centers, but may change slightly as information is updated."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los datos provienen de fuentes oficiales como USGS, EMSC u otros centros sismológicos confiables, pero pueden cambiar ligeramente conforme se actualiza la información."
+          }
+        }
+      }
+    },
+    "faq_question_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why are there earthquakes with negative magnitudes?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Por qué hay terremotos con magnitudes negativas?"
+          }
+        }
+      }
+    },
+    "faq_question_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What's the depth of an earthquake?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es la profundidad de un teremoto?"
+          }
+        }
+      }
+    },
+    "faq_question_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can earthquakes be predicted?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Se pueden predecir los terremotos?"
+          }
+        }
+      }
+    },
+    "faq_question_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is an aftershock?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué es una réplica (aftershock)?"
+          }
+        }
+      }
+    },
+    "faq_question_5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why are some earthquakes more destructive even if they are not as strong?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Por qué algunos terremotos son más destructivos aunque no sean tan fuertes?"
+          }
+        }
+      }
+    },
+    "faq_question_6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why are there so many earthquakes in certain regions of the world?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Por qué hay tantos terremotos en ciertas regiones del mundo?"
+          }
+        }
+      }
+    },
+    "faq_question_7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How reliable is the data displayed by the app?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo de confiables son los datos que muestra la app?"
           }
         }
       }
@@ -382,6 +636,9 @@
         }
       }
     },
+    "No se puede enviar correo desde este dispositivo." : {
+
+    },
     "quake_app_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -398,6 +655,9 @@
           }
         }
       }
+    },
+    "Selecciona una opción" : {
+
     },
     "settings_app_info" : {
       "localizations" : {
@@ -442,7 +702,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "FAQ"
+            "value" : "Preguntas frecuentes"
           }
         }
       }
