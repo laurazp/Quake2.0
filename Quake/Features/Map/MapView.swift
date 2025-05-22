@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    @StateObject private var locationManager = LocationPermissionManager()
     @StateObject private var viewModel: MapViewModel
     @EnvironmentObject var coordinator: Coordinator
     private let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
@@ -23,47 +24,69 @@ struct MapView: View {
     }
     
     var body: some View {
-        Map(position: $cameraPosition, selection: $selectedEarthquake) {
-            ForEach(earthquakes) { earthquake in
-                Marker(
-                    earthquake.simplifiedTitle,
-                    systemImage: Constants.Images.earthquakeMapPinSystemName,
-                    coordinate: getCoordinate(earthquake: earthquake))
-                .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
+        ZStack {
+            // MAP
+            Map(position: $cameraPosition, selection: $selectedEarthquake) {
+                ForEach(earthquakes) { earthquake in
+                    Marker(
+                        earthquake.simplifiedTitle,
+                        systemImage: Constants.Images.earthquakeMapPinSystemName,
+                        coordinate: getCoordinate(earthquake: earthquake))
+                    .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
+                }
+                
+                // MARK: - Search results
+                ForEach(searchResults, id: \.self) { result in
+                    Marker(item: result)
+                }
             }
+            .onAppear {
+                fetchEarthquakes()
+            }
+            .mapStyle(.standard)
+            .safeAreaInset(edge: .bottom, alignment: .trailing) {
+                Button {
+                    //TODO: animate center on user location ??
+                    cameraPosition = .region(.userRegion)
+                } label: {
+                    Image(systemName: Constants.Images.centerLocationIcon)
+                        .foregroundStyle(.white)
+                        .padding(Constants.Design.Dimens.smallMargin)
+                        .background(.blue)
+                        .clipShape(.rect(cornerRadius: Constants.Design.Dimens.mediumMargin))
+                        .padding(.bottom)
+                        .padding(.trailing)
+                }
+            }
+            .onChange(of: searchResults) {
+                cameraPosition = .automatic //TODO: ¿¿??
+            }
+            //TODO: revisar dialog error y async
+            .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+                Task {
+                    fetchEarthquakes()
+                }
+            })
             
-            // MARK: - Search results
-            ForEach(searchResults, id: \.self) { result in
-                Marker(item: result)
+            // Overlay if location permissions are denied
+            if locationManager.isDenied {
+                VStack {
+                    Spacer()
+                    Text("Para ver tu ubicación en el mapa, permite el acceso desde Ajustes.")
+                        .multilineTextAlignment(.center)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(12)
+                        .shadow(radius: 4)
+                        .padding()
+                }
             }
         }
         .onAppear {
-            fetchEarthquakes()
-        }
-        .mapStyle(.standard)
-        .safeAreaInset(edge: .bottom, alignment: .trailing) {
-            Button {
-                //TODO: animate center on user location ??
-                cameraPosition = .region(.userRegion)
-            } label: {
-                Image(systemName: Constants.Images.centerLocationIcon)
-                    .foregroundStyle(.white)
-                    .padding(Constants.Design.Dimens.smallMargin)
-                    .background(.blue)
-                    .clipShape(.rect(cornerRadius: Constants.Design.Dimens.mediumMargin))
-                    .padding(.bottom)
-                    .padding(.trailing)
+            if !locationManager.isAuthorized && !locationManager.isDenied {
+                locationManager.requestPermission()
             }
         }
-        .onChange(of: searchResults) {
-            cameraPosition = .automatic //TODO: ¿¿??
-        }
-        //TODO: revisar dialog error y async
-        .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
-            Task {
-                fetchEarthquakes()
-            }
-        })
     }
     
     //TODO: mover funciones a otro lado?
