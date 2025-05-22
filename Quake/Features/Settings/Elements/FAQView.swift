@@ -42,33 +42,35 @@ struct FAQView: View {
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                // TITLE
-                Text("settings_faq")
-                    .font(.title)
-                    .bold()
-                    .padding()
-                
-                // FAQ LIST
-                ForEach(faqItems) { item in
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text(item.question)
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                        Text(item.answer)
-                            .font(.body)
-                            .foregroundColor(.secondary)
+        VStack {
+            // TITLE
+            Text("settings_faq")
+                .font(.title)
+                .bold()
+                .padding()
+            
+            ScrollView {
+                VStack(spacing: 16) {
+                    // FAQ LIST
+                    ForEach(faqItems) { item in
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text(item.question)
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                            Text(item.answer)
+                                .font(.body)
+                                .foregroundColor(.secondary)
+                        }
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(12)
+                        .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                     }
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(12)
-                    .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                 }
+                .padding()
             }
-            .padding()
+            .background(Color.white.ignoresSafeArea())
         }
-        .background(Color.white.ignoresSafeArea())
     }
 }
 
