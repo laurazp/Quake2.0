@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Earthquake: Identifiable {
+struct Earthquake: Identifiable, Equatable {
     var id: UUID = UUID()
     let fullTitle: String
     let simplifiedTitle: String

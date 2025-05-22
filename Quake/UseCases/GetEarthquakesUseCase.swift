@@ -7,7 +7,7 @@
 
 import Foundation
 
-//typealias GetEarthquakesResult = ([Feature]) -> ()
+typealias GetEarthquakesResult = ([Feature]) -> ()
 //private let dateFormatterGet = DateFormatter()
 
 struct GetEarthquakesUseCase {
@@ -18,13 +18,14 @@ struct GetEarthquakesUseCase {
             self.earthquakesRepository = earthquakesRepository
         }
     
-    func getLatestEarthquakes(days: Int = 30, offset: Int, pageSize: Int/*, completion: @escaping GetEarthquakesResult*/) async throws -> [Earthquake] {
+    func getLatestEarthquakes(days: Int = 30, offset: Int, pageSize: Int) async throws -> [Earthquake] {
         let timeRange = getTimeRangeUseCase.getTimeRange(days: days)
-        return try await earthquakesRepository.getEarthquakes(startTime: timeRange.start,
-                              endTime: timeRange.end,
-                              offset: offset,
-                              pageSize: pageSize/*,
-                              completion: completion*/)
+        return try await earthquakesRepository.getEarthquakes(
+            startTime: timeRange.start,
+            endTime: timeRange.end,
+            offset: offset,
+            pageSize: pageSize
+        )
     }
     
     func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int/*, completion: @escaping GetEarthquakesResult*/) async throws -> [Earthquake] {

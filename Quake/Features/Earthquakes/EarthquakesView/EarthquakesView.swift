@@ -20,22 +20,37 @@ struct EarthquakesView: View {
             if viewModel.isLoading {
                 QuakeLoader()
             } else {
-                //TODO: Paginate earthquakes
-                List(viewModel.earthquakes) { earthquake in
-                    createRow(for: earthquake)
-                        .frame(maxWidth: .infinity)
+                ScrollViewReader { scrollViewProxy in
+                    List(viewModel.earthquakes) { earthquake in
+                        createRow(for: earthquake)
+                            .id(earthquake.id)
+                            .onAppear {
+                                if earthquake == viewModel.earthquakes.last {
+                                    Task {
+                                        let lastId = earthquake.id
+                                        await viewModel.getLatestEarthquakes(isPaginating: true)
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                            withAnimation {
+                                                scrollViewProxy.scrollTo(lastId, anchor: .top)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                    }
+                    .navigationTitle("earthquakes_title")
+                    .listStyle(.plain)
                 }
-                .navigationTitle("earthquakes_title")
-                .listStyle(PlainListStyle())
             }
         }
         .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
             Task {
-                await viewModel.getEarthquakes()
+                await viewModel.getLatestEarthquakes()
             }
         })
         .task {
-            await viewModel.getEarthquakes()
+            await viewModel.getLatestEarthquakes()
         }
     }
     

@@ -10,12 +10,14 @@ import Foundation
 class Coordinator: ObservableObject {
     private let earthquakesRepository: EarthquakesRepository
     private let getEarthquakesUseCase: GetEarthquakesUseCase
+    private let featureToEarthquakeMapper: FeatureToEarthquakeMapper
     
     init() {
         let networkClient = URLSessionNetworkClient()
         
         // MARK: - Earthquakes
         let earthquakesRemoteService = EarthquakesRemoteService(networkClient: networkClient)
+        self.featureToEarthquakeMapper = FeatureToEarthquakeMapper()
         self.earthquakesRepository = EarthquakesRepository(remoteService: earthquakesRemoteService)
         self.getEarthquakesUseCase = GetEarthquakesUseCase(earthquakesRepository: earthquakesRepository)
     }
@@ -46,7 +48,7 @@ class Coordinator: ObservableObject {
     
     // MARK: Viewmodels
     private func makeEarthquakesViewModel() -> EarthquakesViewModel {
-        return EarthquakesViewModel(getEarthquakesUseCase: getEarthquakesUseCase)
+        return EarthquakesViewModel(getEarthquakesUseCase: getEarthquakesUseCase, featureToEarthquakeMapper: featureToEarthquakeMapper)
     }
     
     private func makeMapViewModel() -> MapViewModel {
