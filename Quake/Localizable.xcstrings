@@ -11,11 +11,53 @@
         }
       }
     },
-    "Abrir cámara" : {
-
+    "app_info_credits_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créditos"
+          }
+        }
+      }
     },
-    "Cancelar" : {
-
+    "app_info_general_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "General info"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info general"
+          }
+        }
+      }
+    },
+    "btn_cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
     },
     "device_operating_system_ios" : {
       "extractionState" : "manual",
@@ -148,16 +190,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terremotos"
-          }
-        }
-      }
-    },
-    "Elegir desde la galería" : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Por qué algunos terremotos son más destructivos aunque no sean tan fuertes?"
           }
         }
       }
@@ -417,6 +449,54 @@
         }
       }
     },
+    "feedback_choose_option" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose an option"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona una opción"
+          }
+        }
+      }
+    },
+    "feedback_image_error" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an error attaching the image."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubo un error con la imagen adjunta."
+          }
+        }
+      }
+    },
+    "feedback_mail_error" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot send mail from this device."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se puede enviar correo desde este dispositivo."
+          }
+        }
+      }
+    },
     "feedback_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -430,6 +510,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre"
+          }
+        }
+      }
+    },
+    "feedback_open_camera" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open camera"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir cámara"
+          }
+        }
+      }
+    },
+    "feedback_open_gallery" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose from gallery"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elegir desde la galería"
           }
         }
       }
@@ -653,6 +765,22 @@
         }
       }
     },
+    "map_location_permissions" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To see your location on the map, enable access from Settings."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para ver tu ubicación en el mapa, permite el acceso desde Ajustes."
+          }
+        }
+      }
+    },
     "map_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -738,9 +866,6 @@
         }
       }
     },
-    "No se puede enviar correo desde este dispositivo." : {
-
-    },
     "quake_app_name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -757,9 +882,6 @@
           }
         }
       }
-    },
-    "Selecciona una opción" : {
-
     },
     "settings_app_info" : {
       "localizations" : {

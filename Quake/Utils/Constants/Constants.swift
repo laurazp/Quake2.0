@@ -56,5 +56,6 @@ struct Constants {
         static let centerLocationIcon = "paperplane"
         static let chevronDownIcon = "chevron.down"
         static let chevronRightIcon = "chevron.right"
+        static let locationPermissionsIcon = "location.circle.fill"
     }
 }

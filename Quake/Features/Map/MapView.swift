@@ -72,7 +72,7 @@ struct MapView: View {
             if locationManager.isDenied {
                 VStack {
                     Spacer()
-                    Text("Para ver tu ubicación en el mapa, permite el acceso desde Ajustes.")
+                    Text("map_location_permissions")
                         .multilineTextAlignment(.center)
                         .padding()
                         .background(Color.white)

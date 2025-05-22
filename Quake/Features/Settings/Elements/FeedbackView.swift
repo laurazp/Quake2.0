@@ -80,16 +80,16 @@ struct FeedbackView: View {
                         .onTapGesture {
                             showPhotoOptions = true
                         }
-                        .confirmationDialog("Selecciona una opción", isPresented: $showPhotoOptions, titleVisibility: .visible) {
-                            Button("Abrir cámara") {
+                        .confirmationDialog("feedback_choose_option", isPresented: $showPhotoOptions, titleVisibility: .visible) {
+                            Button("feedback_open_camera") {
                                 imagePickerSource = .camera
                                 showImagePicker = true
                             }
-                            Button("Elegir desde la galería") {
+                            Button("feedback_open_gallery") {
                                 imagePickerSource = .photoLibrary
                                 showImagePicker = true
                             }
-                            Button("Cancelar", role: .cancel) {
+                            Button("btn_cancel", role: .cancel) {
                             }
                         }
                         .sheet(isPresented: $showImagePicker) {
@@ -139,11 +139,11 @@ struct FeedbackView: View {
                                     fileName: "screenshot.jpg"
                                 )
                             } else {
-                                Text("Hubo un problema con la imagen adjunta.")
+                                Text("feedback_image_error")
                                     .padding()
                             }
                         } else {
-                            Text("No se puede enviar correo desde este dispositivo.")
+                            Text("feedback_mail_error")
                                 .padding()
                         }
                     }

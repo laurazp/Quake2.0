@@ -13,7 +13,7 @@ struct LocationServicesView: View {
     var body: some View {
         VStack(spacing: 24) {
             // TITLE
-            Text("settings_app_info")
+            Text("settings_location_services")
                 .font(.title)
                 .bold()
                 .padding()
@@ -21,7 +21,7 @@ struct LocationServicesView: View {
             Color.clear
                 .frame(height: 50)
             
-            Image(systemName: "location.circle.fill")
+            Image(systemName: Constants.Images.locationPermissionsIcon)
                 .resizable()
                 .frame(width: 80, height: 80)
                 .foregroundColor(.blue)
