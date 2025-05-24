@@ -11,7 +11,8 @@ struct EarthquakesView: View {
     @StateObject private var viewModel: EarthquakesViewModel
     @EnvironmentObject var coordinator: Coordinator
     
-    @State private var isDatePickerPresented = false
+    @State private var isSearchBarShown = false
+    @State private var isDatePickerSheetPresented = false
     @State private var startDate = Date()
     @State private var endDate = Date()
     
@@ -26,47 +27,94 @@ struct EarthquakesView: View {
             } else {
                 ScrollViewReader { scrollViewProxy in
                     ZStack(alignment: .bottomTrailing) {
-                        VStack {
-                            VStack {
+                        VStack(alignment: .leading) {
+                            // FILTERS VSTACK
+                            VStack(alignment: .leading, spacing: 24) {
+                                // FILTER AND SORT ROW
                                 HStack {
-                                    // SEARCH BAR WITH DATE PICKER
+                                    // FILTER BUTTON
                                     Button(action: {
-                                        isDatePickerPresented = true
+                                        isSearchBarShown = !isSearchBarShown
                                     }) {
-                                        HStack {
-                                            Image(systemName: Constants.Images.searchDatesIcon)
-                                            Text("earthquakes_search_date_range")
-                                                .foregroundColor(.gray)
-                                            Spacer()
+                                        HStack(spacing: 12) {
+                                            Text("earthquakes_filter")
+                                            Image(systemName: Constants.Images.filterEarthquakesIcon)
                                         }
-                                        .padding()
-                                        .background(Color(.systemGray6))
-                                        .cornerRadius(12)
+                                        .foregroundStyle(Color(.gray))
                                     }
                                     .padding()
+                                    .frame(height: 36, alignment: .center)
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(16)
                                     
-                                    //TODO: Order earthquakes button
+                                    // SORT BUTTON
+                                    Button(action: {
+                                        //TODO: Show sort options
+                                    }) {
+                                        HStack(spacing: 12) {
+                                            Text("earthquakes_sort")
+                                            Image(systemName: Constants.Images.sortEarthquakesIcon)
+                                        }
+                                        .foregroundStyle(Color(.gray))
+                                    }
+                                    .padding()
+                                    .frame(height: 36, alignment: .center)
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(16)
+                                }
+                                .padding([.horizontal, .top])
+                                .frame(alignment: .center)
+                                
+                                HStack {
+                                    // SEARCH BAR WITH DATE PICKER
+                                    if isSearchBarShown {
+                                        Button(action: {
+                                            isDatePickerSheetPresented = true
+                                        }) {
+                                            HStack {
+                                                Image(systemName: Constants.Images.searchDatesIcon)
+                                                Text("earthquakes_search_date_range")
+                                                    .foregroundColor(.gray)
+                                                Spacer()
+                                            }
+                                            .padding()
+                                            .background(Color(.systemGray6))
+                                            .cornerRadius(16)
+                                        }
+                                        .padding()
+                                        .frame(height: 28)
+                                        .foregroundStyle(Color(.gray))
+                                    }
                                 }
                                 
-                                // TODO: CLEAR FILTER BUTTON
-                                    if viewModel.isFiltering {
-                                        Text("Clear Filters")
-                                            .font(.subheadline)
-                                            .foregroundColor(.blue)
-                                            .padding(8)
-                                            .frame(maxWidth: .infinity)
-                                            .background(Color(.systemGray5))
-                                            .cornerRadius(10)
-                                            .onTapGesture {
-                                                Task {
-                                                    viewModel.isFiltering = false
-                                                    viewModel.pageNumber = 0
-                                                    viewModel.filteredEarthquakes = []
-                                                    await viewModel.getLatestEarthquakes()
-                                                }
+                                // CLEAR FILTERS BUTTON
+                                if viewModel.isFiltering {
+                                    HStack {
+                                        Spacer()
+                                        Button(action: {
+                                            Task {
+                                                viewModel.isFiltering = false
+                                                viewModel.pageNumber = 0
+                                                viewModel.filteredEarthquakes = []
+                                                await viewModel.getLatestEarthquakes()
                                             }
-                                        
+                                        }) {
+                                            HStack {
+                                                Image(systemName: Constants.Images.clearFiltersIcon)
+                                                    .foregroundColor(.red)
+                                                Text("filters_clear_filters")
+                                                    .font(.subheadline)
+                                                    .foregroundStyle(Color(.gray))
+                                            }
+                                        }
+                                        .padding()
+                                        .frame(height: 36, alignment: .center)
+                                        .background(Color(.systemGray6))
+                                        .cornerRadius(16)
                                     }
+                                    .padding(.horizontal)
+                                    .frame(alignment: .center)
+                                }
                             }
                             
                             // EARTHQUAKES LIST
@@ -94,36 +142,22 @@ struct EarthquakesView: View {
                                             }
                                         }
                                     }
-                                //                                    .onAppear {
-                                //                                        // Solo paginar si **no se está filtrando**
-                                //                                        if !viewModel.isFiltering,
-                                //                                           earthquake == viewModel.earthquakes.last {
-                                //                                            Task {
-                                //                                                let lastId = earthquake.id
-                                //                                                await viewModel.getLatestEarthquakes(isPaginating: true)
-                                //
-                                //                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                //                                                    withAnimation {
-                                //                                                        scrollViewProxy.scrollTo(lastId, anchor: .top)
-                                //                                                    }
-                                //                                                }
-                                //                                            }
-                                //                                        }
-                                //                                    }
                             }
                             .navigationTitle("earthquakes_title")
                             .listStyle(.plain)
                             
                         }
-                        .sheet(isPresented: $isDatePickerPresented) {
+                        .sheet(isPresented: $isDatePickerSheetPresented) {
                             DatePickerSheet(
                                 startDate: $startDate,
                                 endDate: $endDate,
-                                isPresented: $isDatePickerPresented,
+                                isPresented: $isDatePickerSheetPresented,
                                 onApply: {
                                     Task {
                                         await viewModel.filterEarthquakesByDate(selectedDates: [startDate, endDate])
-                                        isDatePickerPresented = false
+                                        isDatePickerSheetPresented = false
+                                        isSearchBarShown = false
+                                        //TODO: Is it better to show dates instead of hidding the search bar?
                                     }
                                 }
                             )

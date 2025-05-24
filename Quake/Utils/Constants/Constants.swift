@@ -58,6 +58,9 @@ struct Constants {
         static let chevronRightIcon = "chevron.right"
         static let locationPermissionsIcon = "location.circle.fill"
         static let arrowUpIcon = "arrow.up"
-        static let searchDatesIcon = "calendar"
+        static let searchDatesIcon = "magnifyingglass"
+        static let filterEarthquakesIcon = "line.3.horizontal.decrease"
+        static let sortEarthquakesIcon = "arrow.up.arrow.down"
+        static let clearFiltersIcon = "xmark"
     }
 }

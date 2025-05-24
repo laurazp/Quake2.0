@@ -242,6 +242,22 @@
         }
       }
     },
+    "earthquakes_filter" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtros"
+          }
+        }
+      }
+    },
     "earthquakes_search_date_range" : {
       "localizations" : {
         "en" : {
@@ -254,6 +270,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Buscar por rango de fechas"
+          }
+        }
+      }
+    },
+    "earthquakes_sort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ordenar"
           }
         }
       }
@@ -705,6 +737,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Versión"
+          }
+        }
+      }
+    },
+    "filters_clear_filters" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear filters"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpiar filtros"
           }
         }
       }
