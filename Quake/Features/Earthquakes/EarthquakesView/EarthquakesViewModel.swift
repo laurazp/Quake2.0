@@ -9,6 +9,7 @@ import Foundation
 
 class EarthquakesViewModel: ObservableObject {
     @Published var earthquakes = [Earthquake]()
+    @Published var filteredEarthquakes = [Earthquake]()
     @Published var isFiltering = false
     @Published var isLoading = false
     @Published var isLoadingPage = false
@@ -20,13 +21,17 @@ class EarthquakesViewModel: ObservableObject {
     private let featureToEarthquakeMapper: FeatureToEarthquakeMapper
     private let pageSize = 20
     
+    private(set) var lastStartDate: Date = Date()
+    private(set) var lastEndDate: Date = Date()
+    
     init(getEarthquakesUseCase: GetEarthquakesUseCase,
          featureToEarthquakeMapper: FeatureToEarthquakeMapper) {
         self.getEarthquakesUseCase = getEarthquakesUseCase
         self.featureToEarthquakeMapper = featureToEarthquakeMapper
     }
     
-    // GET PAGINATED EARTHQUAKES
+    // MARK: - Paginated Earthquakes
+    
     @MainActor
     func getLatestEarthquakes(isPaginating: Bool = false) async {
         guard !isLoading && !isLoadingPage && hasMoreData else { return }
@@ -65,69 +70,61 @@ class EarthquakesViewModel: ObservableObject {
         }
     }
     
-    //        /*if (isFiltering) {
-    //         do {
-    //         earthquakes = try await getEarthquakesUseCase.getFilteredEarthquakesByDate(selectedDates: <#T##[Date]#>)
-    //         } catch(let error) {
-    //         self.error = error
-    //         }
-    //
-    //         isLoading = false
-    //         } else {
-    //         do {
-    //         earthquakes = try await getEarthquakesUseCase.getLatestEarthquakes(offset: offset, pageSize: 20)
-    //         } catch(let error) {
-    //         self.error = error
-    //         }
-    //
-    //         isLoading = false
-    //         }*/
-    //    }
+    // MARK: - Filtering
     
-    /*private func getFilteredEarthquakesByDate(selectedDates: [Date]) {
-     self.selectedDates = selectedDates
-     isFiltering = true
-     print(selectedDates[0])
-     print(selectedDates[1])
-     
-     let formatter = DateFormatter()
-     formatter.dateStyle = .medium
-     formatter.timeStyle = .none
-     let date1 = formatter.string(from: selectedDates[0])
-     let date2 = formatter.string(from: selectedDates[1])
-     print(date1)
-     print(date2)
-     
-     let offset = pageNumber * remoteService.Constants.pageSize + 1
-     
-     let leftDate = selectedDates[0]
-     let rightDate = date1 == date2 ? nil : selectedDates[1]
-     
-     getEarthquakesUseCase.getEarthquakesBetweenDates(leftDate, rightDate, offset: offset, pageSize: 20)
-     
-     if self.isPaginating {
-     self.filteredEarthquakes.append(contentsOf: mappedEarthquakes)
-     } else {
-     self.filteredEarthquakes = mappedEarthquakes
-     }
-     self.hasMoreData = !(mappedEarthquakes.count < EarthquakesApiDataSource.Constants.pageSize)
-     print("FILTERING: Returned \(features.count). Paginating: \(self.isPaginating). HasMoreData: \(self.hasMoreData)")
-     self.viewDelegate?.updateView()
-     }
-     
-     
-     // MARK: - Filtering
-     func filterEarthquakesByDate(selectedDates: [Date]) {
-     isPaginating = false
-     pageNumber = 0
-     getFilteredEarthquakesByDate(selectedDates: selectedDates)
-     }
-     
-     func endFiltering() {
-     isFiltering = false
-     }*/
+    @MainActor
+    func filterEarthquakesByDate(selectedDates: [Date]) async {
+        isFiltering = true
+        pageNumber = 0
+        filteredEarthquakes = [] // Clean list before adding new data
+        hasMoreData = true
+        lastStartDate = selectedDates[0]
+        lastEndDate = selectedDates.count > 1 ? selectedDates[1] : selectedDates[0]
+        
+        await getFilteredEarthquakesByDate(selectedDates: selectedDates)
+    }
+    
+    @MainActor
+    private func getFilteredEarthquakesByDate(selectedDates: [Date]) async {
+        guard selectedDates.count >= 1 else { return }
+        
+        let leftDate = selectedDates[0]
+        let rightDate = selectedDates.count > 1 ? selectedDates[1] : nil
+        let offset = pageNumber * pageSize + 1
+        
+        do {
+            let earthquakes = try await getEarthquakesUseCase.getEarthquakesBetweenDates(
+                leftDate,
+                rightDate,
+                offset: offset,
+                pageSize: pageSize
+            )
+            
+            if pageNumber == 0 {
+                filteredEarthquakes = earthquakes
+            } else {
+                filteredEarthquakes.append(contentsOf: earthquakes)
+            }
+            
+            hasMoreData = earthquakes.count == pageSize //TODO: Check for last page
+        } catch {
+            self.error = error
+        }
+    }
+    
+    @MainActor
+    func loadMoreFilteredEarthquakes() async {
+        guard isFiltering, hasMoreData else { return }
+        pageNumber += 1
+        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate])
+    }
+    
+    func endFiltering() {
+        isFiltering = false
+    }
     
     // MARK: - Ordering
+    
     /*func orderFeaturesByMagnitude() {
      inIncreasingOrder = !inIncreasingOrder
      if (isFiltering) {

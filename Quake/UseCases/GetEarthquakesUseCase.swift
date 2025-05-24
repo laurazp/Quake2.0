@@ -28,17 +28,11 @@ struct GetEarthquakesUseCase {
         )
     }
     
-    func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int/*, completion: @escaping GetEarthquakesResult*/) async throws -> [Earthquake] {
+    func getEarthquakesBetweenDates(_ startDate: Date, _ endDate: Date?, offset: Int, pageSize: Int) async throws -> [Earthquake] {
         let dateRange = getTimeRangeUseCase.getDateRangeFromDates(startDate: startDate, endDate: endDate)
         return try await earthquakesRepository.getEarthquakes(startTime: dateRange.start,
                               endTime: dateRange.end,
                               offset: offset,
-                              pageSize: pageSize/*,
-                              completion: completion*/)
+                              pageSize: pageSize)
     }
-    
-    //TODO: modificar completion???
-    /*func execute() async throws -> [Feature] {
-        try await earthquakesRepository.getEarthquakes()
-    }*/
 }
