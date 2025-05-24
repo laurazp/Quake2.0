@@ -57,5 +57,7 @@ struct Constants {
         static let chevronDownIcon = "chevron.down"
         static let chevronRightIcon = "chevron.right"
         static let locationPermissionsIcon = "location.circle.fill"
+        static let arrowUpIcon = "arrow.up"
+        static let searchDatesIcon = "calendar"
     }
 }
