@@ -31,6 +31,7 @@ struct Constants {
             
             static let mapDetailHeight = 350.0
             static let settingsRowHeight = 38.0
+            static let customButtonheight = 36.0
             static let cardCornerRadius = 8.0
             
             static let imageOpacity = 0.6

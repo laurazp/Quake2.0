@@ -25,6 +25,7 @@
 		220B37822DDA33B8006916A0 /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37812DDA33AD006916A0 /* LocationPermissionManager.swift */; };
 		220B37842DDF23C7006916A0 /* CustomLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37832DDF23C7006916A0 /* CustomLink.swift */; };
 		220B37862DDFD0B9006916A0 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */; };
+		220B37882DE3B972006916A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37872DE3B972006916A0 /* CustomButton.swift */; };
 		22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */; };
 		22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3C2B72FC4E00EBAD6C /* ContentView.swift */; };
 		22405C3F2B72FC4F00EBAD6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22405C3E2B72FC4F00EBAD6C /* Assets.xcassets */; };
@@ -81,6 +82,7 @@
 		220B37812DDA33AD006916A0 /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
 		220B37832DDF23C7006916A0 /* CustomLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLink.swift; sourceTree = "<group>"; };
 		220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
+		220B37872DE3B972006916A0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		22405C372B72FC4E00EBAD6C /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeApp.swift; sourceTree = "<group>"; };
 		22405C3C2B72FC4E00EBAD6C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				220B37742DD61115006916A0 /* FeedbackCard.swift */,
 				220B37832DDF23C7006916A0 /* CustomLink.swift */,
 				220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */,
+				220B37872DE3B972006916A0 /* CustomButton.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				22405C7E2B756A0200EBAD6C /* EarthquakesRemoteService.swift in Sources */,
 				22405C782B75671000EBAD6C /* Earthquake.swift in Sources */,
 				220B37842DDF23C7006916A0 /* CustomLink.swift in Sources */,
+				220B37882DE3B972006916A0 /* CustomButton.swift in Sources */,
 				22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */,
 				22405C8C2B7640B500EBAD6C /* EarthquakeItemView.swift in Sources */,
 				220B37632DD29D44006916A0 /* LocationServicesView.swift in Sources */,
