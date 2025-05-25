@@ -13,6 +13,7 @@ struct EarthquakesView: View {
     
     @State private var isSearchBarShown = false
     @State private var isDatePickerSheetPresented = false
+    @State private var showSortButtons = false
     @State private var startDate = Date()
     @State private var endDate = Date()
     
@@ -33,37 +34,78 @@ struct EarthquakesView: View {
                                 // FILTER AND SORT ROW
                                 HStack {
                                     // FILTER BUTTON
-                                    Button(action: {
+                                    CustomButton(
+                                        buttonText: String(localized: "earthquakes_filter"),
+                                        buttonImage: Constants.Images.filterEarthquakesIcon,
+                                        isFontSmall: false,
+                                        action: {
                                         isSearchBarShown = !isSearchBarShown
-                                    }) {
-                                        HStack(spacing: 12) {
-                                            Text("earthquakes_filter")
-                                            Image(systemName: Constants.Images.filterEarthquakesIcon)
-                                        }
-                                        .foregroundStyle(Color(.gray))
-                                    }
-                                    .padding()
-                                    .frame(height: 36, alignment: .center)
-                                    .background(Color(.systemGray6))
-                                    .cornerRadius(16)
+                                    })
                                     
                                     // SORT BUTTON
-                                    Button(action: {
+                                    CustomButton(
+                                        buttonText: String(localized: "earthquakes_sort"),
+                                        buttonImage: Constants.Images.sortEarthquakesIcon,
+                                        isFontSmall: false,
+                                        action: {
                                         //TODO: Show sort options
-                                    }) {
-                                        HStack(spacing: 12) {
-                                            Text("earthquakes_sort")
-                                            Image(systemName: Constants.Images.sortEarthquakesIcon)
-                                        }
-                                        .foregroundStyle(Color(.gray))
-                                    }
-                                    .padding()
-                                    .frame(height: 36, alignment: .center)
-                                    .background(Color(.systemGray6))
-                                    .cornerRadius(16)
+                                        showSortButtons = !showSortButtons
+                                    })
+                                    
+//                                    Menu {
+//                                        Button("earthquakes_sort_by_magnitude") {
+//                                            viewModel.orderFeaturesByMagnitude()
+//                                        }
+//                                        Button("earthquakes_sort_by_place") {
+//                                            viewModel.orderFeaturesByPlace()
+//                                        }
+//                                        Button("earthquakes_sort_by_date") {
+//                                            viewModel.orderFeaturesByDate()
+//                                        }
+//                                    } label: {
+//                                        HStack(spacing: 12) {
+//                                            Text("earthquakes_sort")
+//                                            Image(systemName: Constants.Images.sortEarthquakesIcon)
+//                                        }
+//                                        .padding()
+//                                        .frame(height: 36, alignment: .center)
+//                                        .background(Color(.systemGray6))
+//                                        .foregroundStyle(Color(.gray))
+//                                        .cornerRadius(16)
+//                                    }
+//                                    .padding(.horizontal)
                                 }
                                 .padding([.horizontal, .top])
                                 .frame(alignment: .center)
+                                
+                                // SORT BUTTONS ROW
+                                if showSortButtons {
+                                    HStack {
+                                        CustomButton(
+                                            buttonText: String(localized: "earthquakes_sort_by_magnitude"),
+                                            buttonImage: viewModel.inIncreasingOrder ? "arrow.down" : "arrow.up",
+                                            isFontSmall: true,
+                                            action: {
+                                            viewModel.orderFeaturesByMagnitude()
+                                            //TODO: Show Clear filters button
+                                        })
+                                        CustomButton(
+                                            buttonText: String(localized: "earthquakes_sort_by_place"),
+                                            buttonImage: viewModel.inAlphabeticalOrder ? "arrow.down" : "arrow.up",
+                                            isFontSmall: true,
+                                            action: {
+                                            viewModel.orderFeaturesByPlace()
+                                        })
+                                        CustomButton(
+                                            buttonText: String(localized: "earthquakes_sort_by_date"),
+                                            buttonImage: viewModel.inAscendingDateOrder ? "arrow.down" : "arrow.up",
+                                            isFontSmall: true,
+                                            action: {
+                                            viewModel.orderFeaturesByDate()
+                                        })
+                                    }
+                                    .padding(.horizontal)
+                                }
                                 
                                 HStack {
                                     // SEARCH BAR WITH DATE PICKER
@@ -82,7 +124,7 @@ struct EarthquakesView: View {
                                             .cornerRadius(16)
                                         }
                                         .padding()
-                                        .frame(height: 28)
+                                        .frame(height: 40)
                                         .foregroundStyle(Color(.gray))
                                     }
                                 }

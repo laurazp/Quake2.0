@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomButton: View {
     let buttonText: String
     let buttonImage: String
+    let isFontSmall: Bool?
     let action: () -> Void
     
     var body: some View {
@@ -18,9 +19,12 @@ struct CustomButton: View {
         }) {
             HStack(spacing: Constants.Design.Dimens.mediumMargin) {
                 Text(buttonText)
-                Image(systemName: buttonImage)
+                if !buttonImage.isEmpty {
+                    Image(systemName: buttonImage)
+                }
             }
             .foregroundStyle(Color(.gray))
+            .font(isFontSmall ?? false ? .footnote : .body)
         }
         .padding()
         .frame(height: Constants.Design.Dimens.customButtonheight, alignment: .center)
@@ -30,5 +34,5 @@ struct CustomButton: View {
 }
 
 #Preview {
-    CustomButton(buttonText: "Sort", buttonImage: Constants.Images.sortEarthquakesIcon, action: {})
+    CustomButton(buttonText: "Sort", buttonImage: Constants.Images.sortEarthquakesIcon, isFontSmall: false, action: {})
 }

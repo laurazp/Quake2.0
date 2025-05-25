@@ -14,6 +14,9 @@ class EarthquakesViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var isLoadingPage = false
     @Published var hasMoreData = true
+    @Published var inIncreasingOrder = false
+    @Published var inAlphabeticalOrder = false
+    @Published var inAscendingDateOrder = false
     @Published var pageNumber = 0
     @Published var error: Error?
     
@@ -125,57 +128,54 @@ class EarthquakesViewModel: ObservableObject {
     
     // MARK: - Ordering
     
-    /*func orderFeaturesByMagnitude() {
-     inIncreasingOrder = !inIncreasingOrder
-     if (isFiltering) {
-     filteredEarthquakes.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
-     } else {
-     earthquakesData.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
-     }
-     self.viewDelegate?.updateView()
-     }
+    func orderFeaturesByMagnitude() {
+        inIncreasingOrder = !inIncreasingOrder
+        if (isFiltering) {
+            filteredEarthquakes.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
+        } else {
+            earthquakes.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
+        }
+        //TODO: Show clear filters button
+//        isFiltering = true
+    }
      
-     func orderFeaturesByPlace() {
-     if (!inIncreasingOrder) {
-     if (isFiltering) {
-     filteredEarthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
-     inIncreasingOrder = true
-     } else {
-     earthquakesData.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
-     inIncreasingOrder = true
-     }
-     self.viewDelegate?.updateView()
-     } else {
-     if (isFiltering) {
-     filteredEarthquakes.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
-     inIncreasingOrder = false
-     } else {
-     earthquakesData.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
-     inIncreasingOrder = false
-     }
-     self.viewDelegate?.updateView()
-     }
-     }
+    func orderFeaturesByPlace() {
+        if (!inAlphabeticalOrder) {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+                inAlphabeticalOrder = true
+            } else {
+                earthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+                inAlphabeticalOrder = true
+            }
+        } else {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+                inAlphabeticalOrder = false
+            } else {
+                earthquakes.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+                inAlphabeticalOrder = false
+            }
+        }
+    }
      
-     func orderFeaturesByDate() {
-     if (!inIncreasingOrder) {
-     if (isFiltering) {
-     filteredEarthquakes.sort(by: { $0.originalDate < $1.originalDate })
-     inIncreasingOrder = true
-     } else {
-     earthquakesData.sort(by: { $0.originalDate < $1.originalDate })
-     inIncreasingOrder = true
-     }
-     self.viewDelegate?.updateView()
-     } else {
-     if (isFiltering) {
-     filteredEarthquakes.sort(by: { $1.originalDate < $0.originalDate })
-     inIncreasingOrder = false
-     } else {
-     earthquakesData.sort(by: { $1.originalDate < $0.originalDate })
-     inIncreasingOrder = false
-     }
-     self.viewDelegate?.updateView()
-     }
-     }*/
+    func orderFeaturesByDate() {
+        if (!inAscendingDateOrder) {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $0.originalDate < $1.originalDate })
+                inAscendingDateOrder = true
+            } else {
+                earthquakes.sort(by: { $0.originalDate < $1.originalDate })
+                inAscendingDateOrder = true
+            }
+        } else {
+            if (isFiltering) {
+                filteredEarthquakes.sort(by: { $1.originalDate < $0.originalDate })
+                inAscendingDateOrder = false
+            } else {
+                earthquakes.sort(by: { $1.originalDate < $0.originalDate })
+                inAscendingDateOrder = false
+            }
+        }
+    }
 }

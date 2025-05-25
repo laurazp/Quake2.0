@@ -290,6 +290,54 @@
         }
       }
     },
+    "earthquakes_sort_by_date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By date"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por fecha"
+          }
+        }
+      }
+    },
+    "earthquakes_sort_by_magnitude" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By magnitude"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por magnitud"
+          }
+        }
+      }
+    },
+    "earthquakes_sort_by_place" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By place"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por lugar"
+          }
+        }
+      }
+    },
     "earthquakes_title" : {
       "localizations" : {
         "en" : {
