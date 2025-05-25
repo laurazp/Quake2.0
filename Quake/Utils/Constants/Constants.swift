@@ -47,7 +47,7 @@ struct Constants {
     struct Images {
         static let earthquakesListIcon = "house"
         static let mapIcon = "map"
-        static let settingsIcon = "wrench.and.screwdriver"
+        static let settingsIcon = "wrench.and.screwdriver.fill"
         static let earthquakeMapPinSystemName = "waveform.path.ecg" //pin.fill
         static let unitsSettingsImageName = "option"
         static let locationSettingsImageName = "location"
@@ -59,6 +59,7 @@ struct Constants {
         static let chevronRightIcon = "chevron.right"
         static let locationPermissionsIcon = "location.circle.fill"
         static let arrowUpIcon = "arrow.up"
+        static let arrowDownIcon = "arrow.down"
         static let searchDatesIcon = "magnifyingglass"
         static let filterEarthquakesIcon = "line.3.horizontal.decrease"
         static let sortEarthquakesIcon = "arrow.up.arrow.down"

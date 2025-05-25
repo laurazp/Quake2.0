@@ -83,7 +83,7 @@ struct EarthquakesView: View {
                                     HStack {
                                         CustomButton(
                                             buttonText: String(localized: "earthquakes_sort_by_magnitude"),
-                                            buttonImage: viewModel.inIncreasingOrder ? "arrow.down" : "arrow.up",
+                                            buttonImage: viewModel.inIncreasingOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
                                             isFontSmall: true,
                                             action: {
                                             viewModel.orderFeaturesByMagnitude()
@@ -91,14 +91,14 @@ struct EarthquakesView: View {
                                         })
                                         CustomButton(
                                             buttonText: String(localized: "earthquakes_sort_by_place"),
-                                            buttonImage: viewModel.inAlphabeticalOrder ? "arrow.down" : "arrow.up",
+                                            buttonImage: viewModel.inAlphabeticalOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
                                             isFontSmall: true,
                                             action: {
                                             viewModel.orderFeaturesByPlace()
                                         })
                                         CustomButton(
                                             buttonText: String(localized: "earthquakes_sort_by_date"),
-                                            buttonImage: viewModel.inAscendingDateOrder ? "arrow.down" : "arrow.up",
+                                            buttonImage: viewModel.inAscendingDateOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
                                             isFontSmall: true,
                                             action: {
                                             viewModel.orderFeaturesByDate()
