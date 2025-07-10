@@ -28,11 +28,25 @@ struct MapView: View {
             // MAP
             Map(position: $cameraPosition, selection: $selectedEarthquake) {
                 ForEach(earthquakes) { earthquake in
+                    //                    Annotation(earthquake.simplifiedTitle, coordinate: getCoordinate(earthquake: earthquake)) {
+                    //                        NavigationLink {
+                    //                            EarthquakeDetailView(earthquake: earthquake)
+                    //                        } label: {
+                    //                            VStack {
+                    //                                Image(systemName: Constants.Images.earthquakeMapPinSystemName)
+                    //                                    .font(.title2)
+                    //                                    .foregroundColor(getMarkerColor(magnitude: earthquake.originalMagnitude))
+                    //                                Text(earthquake.simplifiedTitle)
+                    //                                    .font(.caption)
+                    //                            }
+                    //                        }
+                    //                    }
                     Marker(
                         earthquake.simplifiedTitle,
                         systemImage: Constants.Images.earthquakeMapPinSystemName,
                         coordinate: getCoordinate(earthquake: earthquake))
                     .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
+                    .tag(earthquake)
                 }
                 
                 // MARK: - Search results
