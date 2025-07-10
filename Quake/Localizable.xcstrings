@@ -43,7 +43,11 @@
         }
       }
     },
+    "Apply" : {
+
+    },
     "btn_apply" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -75,7 +79,11 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
     "date_picker_end_date" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -92,6 +100,7 @@
       }
     },
     "date_picker_select_range" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -108,6 +117,7 @@
       }
     },
     "date_picker_start_day" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -259,6 +269,7 @@
       }
     },
     "earthquakes_search_date_range" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -353,6 +364,12 @@
           }
         }
       }
+    },
+    "End Date" : {
+
+    },
+    "Enter place name" : {
+
     },
     "faq_answer_1" : {
       "extractionState" : "manual",
@@ -789,6 +806,9 @@
         }
       }
     },
+    "Filters" : {
+
+    },
     "filters_clear_filters" : {
       "localizations" : {
         "en" : {
@@ -1059,6 +1079,12 @@
         }
       }
     },
+    "Search place" : {
+
+    },
+    "Select dates range" : {
+
+    },
     "settings_app_info" : {
       "localizations" : {
         "en" : {
@@ -1219,6 +1245,9 @@
           }
         }
       }
+    },
+    "Start Date" : {
+
     }
   },
   "version" : "1.0"

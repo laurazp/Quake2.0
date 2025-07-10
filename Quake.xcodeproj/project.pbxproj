@@ -24,7 +24,7 @@
 		220B37802DD8A2D0006916A0 /* FAQItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B377F2DD8A2CA006916A0 /* FAQItem.swift */; };
 		220B37822DDA33B8006916A0 /* LocationPermissionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37812DDA33AD006916A0 /* LocationPermissionManager.swift */; };
 		220B37842DDF23C7006916A0 /* CustomLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37832DDF23C7006916A0 /* CustomLink.swift */; };
-		220B37862DDFD0B9006916A0 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */; };
+		220B37862DDFD0B9006916A0 /* FiltersSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37852DDFD0B9006916A0 /* FiltersSheet.swift */; };
 		220B37882DE3B972006916A0 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37872DE3B972006916A0 /* CustomButton.swift */; };
 		22405C3B2B72FC4E00EBAD6C /* QuakeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */; };
 		22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C3C2B72FC4E00EBAD6C /* ContentView.swift */; };
@@ -81,7 +81,7 @@
 		220B377F2DD8A2CA006916A0 /* FAQItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQItem.swift; sourceTree = "<group>"; };
 		220B37812DDA33AD006916A0 /* LocationPermissionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionManager.swift; sourceTree = "<group>"; };
 		220B37832DDF23C7006916A0 /* CustomLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLink.swift; sourceTree = "<group>"; };
-		220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
+		220B37852DDFD0B9006916A0 /* FiltersSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersSheet.swift; sourceTree = "<group>"; };
 		220B37872DE3B972006916A0 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		22405C372B72FC4E00EBAD6C /* Quake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22405C3A2B72FC4E00EBAD6C /* QuakeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeApp.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 				220B375B2DBED835006916A0 /* QuakeLoader.swift */,
 				220B37742DD61115006916A0 /* FeedbackCard.swift */,
 				220B37832DDF23C7006916A0 /* CustomLink.swift */,
-				220B37852DDFD0B9006916A0 /* DatePickerSheet.swift */,
+				220B37852DDFD0B9006916A0 /* FiltersSheet.swift */,
 				220B37872DE3B972006916A0 /* CustomButton.swift */,
 			);
 			path = Widgets;
@@ -482,7 +482,7 @@
 				220B37702DD60420006916A0 /* FeedbackView.swift in Sources */,
 				22405C652B73923C00EBAD6C /* UnitsUseCase.swift in Sources */,
 				22405C872B7639D700EBAD6C /* EarthquakesView.swift in Sources */,
-				220B37862DDFD0B9006916A0 /* DatePickerSheet.swift in Sources */,
+				220B37862DDFD0B9006916A0 /* FiltersSheet.swift in Sources */,
 				22405C5E2B73911800EBAD6C /* GetTimeRangeUseCase.swift in Sources */,
 				220B375C2DBED835006916A0 /* QuakeLoader.swift in Sources */,
 				22405C7C2B75685700EBAD6C /* EarthquakesRepository.swift in Sources */,
