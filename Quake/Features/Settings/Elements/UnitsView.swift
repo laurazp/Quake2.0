@@ -13,7 +13,7 @@ struct UnitsView: View {
     
     init(settingsViewModel: SettingsViewModel = SettingsViewModel()) {
         _settingsViewModel = StateObject(wrappedValue: settingsViewModel)
-        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {

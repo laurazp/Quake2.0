@@ -133,6 +133,23 @@
         }
       }
     },
+    "device_model" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Device model"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dispositivo"
+          }
+        }
+      }
+    },
     "device_operating_system_ios" : {
       "extractionState" : "manual",
       "localizations" : {
