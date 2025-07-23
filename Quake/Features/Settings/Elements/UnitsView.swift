@@ -9,6 +9,11 @@ import SwiftUI
 
 struct UnitsView: View {
     @State private var selectedUnit: LengthUnit = .kilometers
+    @StateObject private var settingsViewModel: SettingsViewModel
+    
+    init(settingsViewModel: SettingsViewModel = SettingsViewModel()) {
+        _settingsViewModel = StateObject(wrappedValue: settingsViewModel)
+        }
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,7 +31,6 @@ struct UnitsView: View {
                 Text("settings_units_length")
                     .font(.headline)
                 
-                //TODO: Set unit as selected in app
                 Picker("settings_units_length", selection: $selectedUnit) {
                     ForEach(LengthUnit.allCases) { unit in
                         Text(unit.localizedLabel)
@@ -35,10 +39,17 @@ struct UnitsView: View {
                 }
                 .pickerStyle(.segmented)
                 .padding(.top, 8)
+                .onChange(of: selectedUnit) {
+                    settingsViewModel.saveSelectedUnit(selectedSegmentIndex: selectedUnit.index)
+                }
             }
             .padding()
             
             Spacer()
+        }
+        .onAppear {
+            /// Get UserDefaults selected unit value
+            selectedUnit = LengthUnit(rawValue: settingsViewModel.getSelectedUnit()) ?? .kilometers
         }
     }
 }
