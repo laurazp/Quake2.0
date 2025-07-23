@@ -62,12 +62,14 @@ struct FAQView: View {
                                 .foregroundColor(.secondary)
                         }
                         .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         .background(Color.white)
                         .cornerRadius(12)
                         .shadow(color: Color.black.opacity(0.05), radius: 4, x: 0, y: 2)
                     }
                 }
                 .padding()
+                .frame(maxWidth: .infinity)
             }
             .background(Color.white.ignoresSafeArea())
         }
