@@ -43,7 +43,7 @@ struct EarthquakeDetailView: View {
                                 .foregroundStyle(.gray)
                             
                             Text(value)
-                                .foregroundColor(key == "earthquake_magnitude" ? Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)) : Color.black)
+                                .foregroundColor(key == "earthquake_magnitude" ? Color(getMagnitudeColorUseCase.getMagnitudeColor(magnitude: earthquake.originalMagnitude)) : Color.primary)
                                 .fontWeight(key == "earthquake_magnitude" ? .bold : .regular)
                         }
                     }

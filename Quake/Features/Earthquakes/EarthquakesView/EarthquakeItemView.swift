@@ -73,7 +73,7 @@ struct EarthquakeItemView: View {
                     
                     Text(earthquake.simplifiedTitle)
                         .font(.title3)
-                        .foregroundColor(.black)
+                        .foregroundColor(.primary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(Constants.Design.Dimens.extraSmallMargin)

@@ -61,6 +61,7 @@
 		22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C942B7933C300EBAD6C /* SettingsView.swift */; };
 		22405C972B7AB67900EBAD6C /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22405C962B7AB67900EBAD6C /* MapViewModel.swift */; };
 		22636BBD2E30FC0800559107 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22636BBC2E30FC0800559107 /* SettingsViewModel.swift */; };
+		22636BBF2E32379F00559107 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22636BBE2E32379C00559107 /* Color.swift */; };
 		22F69E7B2D9DEC3300681C36 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F69E7A2D9DEC2D00681C36 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		22405C942B7933C300EBAD6C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		22405C962B7AB67900EBAD6C /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		22636BBC2E30FC0800559107 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		22636BBE2E32379C00559107 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		22F69E7A2D9DEC2D00681C36 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 		22405C5F2B73917F00EBAD6C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				22636BBE2E32379C00559107 /* Color.swift */,
 				220B37722DD60FC7006916A0 /* View.swift */,
 				22405C602B7391B100EBAD6C /* Date.swift */,
 				22405C662B7562E100EBAD6C /* UserDefaults.swift */,
@@ -466,6 +469,7 @@
 				22405C5A2B738EA200EBAD6C /* URLSessionNetworkClient.swift in Sources */,
 				22405C6F2B7564D200EBAD6C /* GetSimplifiedTitleFormatter.swift in Sources */,
 				22405C742B75653B00EBAD6C /* FeatureToEarthquakeMapper.swift in Sources */,
+				22636BBF2E32379F00559107 /* Color.swift in Sources */,
 				22405C3D2B72FC4E00EBAD6C /* ContentView.swift in Sources */,
 				220B37792DD62AE6006916A0 /* LengthUnit.swift in Sources */,
 				22405C502B73877A00EBAD6C /* APIResponse.swift in Sources */,

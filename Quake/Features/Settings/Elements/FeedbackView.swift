@@ -49,9 +49,9 @@ struct FeedbackView: View {
                             } label: {
                                 HStack {
                                     Text(viewModel.selectedType.localizedLabel)
-                                        .foregroundColor(.black.opacity(0.6))
+                                        .foregroundColor(.primary.opacity(0.6))
                                     Image(systemName: Constants.Images.chevronDownIcon)
-                                        .foregroundColor(.black.opacity(0.5))
+                                        .foregroundColor(.primary.opacity(0.5))
                                         .font(.system(size: 14, weight: .semibold))
                                 }
                                 .padding(.horizontal, 8)
