@@ -23,6 +23,8 @@ struct MapView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
+    //TODO: Centrar en ubicación del usuario si hay permisos
+    
     var body: some View {
         ZStack {
             // MAP
