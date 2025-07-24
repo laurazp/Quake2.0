@@ -13,10 +13,13 @@ class SettingsViewModel: ObservableObject {
     
     /// Message variables
     @Published var selectedType: MessageType = .request
+    @Published var selectedImage: UIImage?
     @Published var messageText: String = ""
     @Published var appName: String = ""
     @Published var appVersion: String = ""
     @Published var appBuild: String = ""
+    @Published var deviceModel: String = ""
+    @Published var deviceSystemVersion: String = ""
     
     // MARK: UNITS
     func saveSelectedUnit(selectedSegmentIndex: Int) {
@@ -29,6 +32,8 @@ class SettingsViewModel: ObservableObject {
     
     // MARK: FEEDBACK
     func loadAppInfo() {
+        deviceSystemVersion = UIDevice.current.systemVersion
+        deviceModel = UIDevice.current.model
         appName = String(localized: LocalizedStringResource("quake_app_name"))
         appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "N/A"
         appBuild = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "N/A"

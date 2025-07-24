@@ -17,7 +17,6 @@ struct FeedbackView: View {
     @State private var showPhotoOptions = false
     @State private var showImagePicker = false
     @State private var imagePickerSource: ImagePicker.SourceType = .photoLibrary
-    @State private var selectedImage: UIImage?
     
     @State private var showMailView = false
     
@@ -69,7 +68,6 @@ struct FeedbackView: View {
                             .background(Color(UIColor.systemGray6))
                             .cornerRadius(Constants.Design.Dimens.cardCornerRadius)
                     }
-                    //TODO: Save selected image here?
                     
                     // ADDITIONAL INFO
                     FeedbackCard {
@@ -99,16 +97,15 @@ struct FeedbackView: View {
                         }
                         .sheet(isPresented: $showImagePicker) {
                             ImagePicker(sourceType: imagePickerSource) { image in
-                                selectedImage = image
-                                //TODO: Save selected image here?
+                                viewModel.selectedImage = image
                             }
                         }
                     }
                     
                     // DEVICE INFO
                     FeedbackCard {
-                        createFeedbackRow(title: String(localized: LocalizedStringResource("device_model")), text: UIDevice.current.model) // Device model
-                        createFeedbackRow(title: String(localized: LocalizedStringResource("device_operating_system_ios")), text: UIDevice.current.systemVersion) // Device system version
+                        createFeedbackRow(title: String(localized: LocalizedStringResource("device_model")), text: viewModel.deviceModel) // Device model
+                        createFeedbackRow(title: String(localized: LocalizedStringResource("device_operating_system_ios")), text: viewModel.deviceSystemVersion) // Device system version
                     }
                     
                     // APP INFO
@@ -120,7 +117,6 @@ struct FeedbackView: View {
                     
                     Button(action: {
                         didTapSend = true
-                        //TODO: Send mail with all info
                         showMailView = true
                     }) {
                         Text("feedback_send_feedback")
@@ -133,7 +129,7 @@ struct FeedbackView: View {
                     }
                     .sheet(isPresented: $showMailView) {
                         if MFMailComposeViewController.canSendMail() {
-                            if let image = selectedImage,
+                            if let image = viewModel.selectedImage,
                                let imageData = image.jpegData(compressionQuality: 0.8) {
                                 
                                 MailView(
@@ -143,7 +139,6 @@ struct FeedbackView: View {
                                     attachment: imageData,
                                     mimeType: "image/jpeg",
                                     fileName: "screenshot.jpg"
-                                    //TODO: Revisar mail!
                                 )
                             } else {
                                 Text("feedback_image_error")
@@ -184,8 +179,8 @@ struct FeedbackView: View {
         App Name: \(viewModel.appName)
         App Version: \(viewModel.appVersion)
         App Build: \(viewModel.appBuild)
-        iOS Version: \(UIDevice.current.systemVersion)
         Device: \(UIDevice.current.model)
+        iOS Version: \(UIDevice.current.systemVersion)
         """
     }
 }
