@@ -24,6 +24,8 @@ struct MapView: View {
     }
     
     //TODO: Centrar en ubicación del usuario si hay permisos
+    //TODO: Pedir permisos al entrar al mapa si no están concedidos?
+    //TODO: Implementar click en los markers
     
     var body: some View {
         ZStack {

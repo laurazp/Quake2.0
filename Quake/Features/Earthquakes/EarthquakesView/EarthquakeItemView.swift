@@ -18,7 +18,7 @@ struct EarthquakeItemView: View {
             isExpanded: $isExpanded,
             content: {
                 VStack(alignment: .leading, spacing: Constants.Design.Dimens.semiLargeMargin) {
-                    // EARTHQUAKE DETAILS
+                    // DROPDOWN EARTHQUAKE DETAILS
                     ForEach([
                         ("earthquake_place", earthquake.place),
                         ("earthquake_date", earthquake.date),
@@ -54,6 +54,7 @@ struct EarthquakeItemView: View {
                     .frame(maxWidth: .infinity)
                     
                     // Invisible NavigationLink
+                    //TODO: Cambiar por no deprecated?
                     NavigationLink(destination: EarthquakeDetailView(earthquake: earthquake), isActive: $navigate) {
                         EmptyView()
                     }
@@ -65,6 +66,7 @@ struct EarthquakeItemView: View {
                 .cornerRadius(Constants.Design.Dimens.cardCornerRadius)
             },
             label: {
+                // EARTHQUAKE MAGNITUDE AND TITLE
                 HStack (alignment: VerticalAlignment.center, spacing: Constants.Design.Dimens.mediumMargin) {
                     Text(earthquake.formattedMagnitude)
                         .font(.title2)
@@ -77,7 +79,7 @@ struct EarthquakeItemView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(Constants.Design.Dimens.extraSmallMargin)
-                .multilineTextAlignment(.center)
+                .multilineTextAlignment(.leading)
             }
         )
         .accentColor(.gray)

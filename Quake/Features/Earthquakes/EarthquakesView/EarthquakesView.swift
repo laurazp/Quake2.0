@@ -143,13 +143,7 @@ struct EarthquakesView: View {
                                         } else {
                                             if earthquake == viewModel.earthquakes.last, viewModel.hasMoreData {
                                                 Task {
-                                                    let lastId = earthquake.id
                                                     await viewModel.getLatestEarthquakes(isPaginating: true)
-                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                                        withAnimation {
-                                                            scrollViewProxy.scrollTo(lastId, anchor: .top)
-                                                        }
-                                                    }
                                                 }
                                             }
                                         }
