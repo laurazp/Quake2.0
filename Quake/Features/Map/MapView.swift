@@ -16,7 +16,9 @@ struct MapView: View {
     
     @State private var earthquakes: [Earthquake] = []
     @State private var searchResults: [MKMapItem] = []
-    @State private var selectedEarthquake: MKMapItem?
+    @State private var selectedEarthquake: Earthquake?
+    @State private var showDetailCard = false
+    @State private var navigateToDetail = false
     @State private var cameraPosition: MapCameraPosition = .region(.userRegion)
     
     init(viewModel: MapViewModel) {
@@ -24,85 +26,95 @@ struct MapView: View {
     }
     
     //TODO: Centrar en ubicación del usuario si hay permisos
-    //TODO: Pedir permisos al entrar al mapa si no están concedidos?
     //TODO: Implementar click en los markers
     
     var body: some View {
-        ZStack {
-            // MAP
-            Map(position: $cameraPosition, selection: $selectedEarthquake) {
-                ForEach(earthquakes) { earthquake in
-                    //                    Annotation(earthquake.simplifiedTitle, coordinate: getCoordinate(earthquake: earthquake)) {
-                    //                        NavigationLink {
-                    //                            EarthquakeDetailView(earthquake: earthquake)
-                    //                        } label: {
-                    //                            VStack {
-                    //                                Image(systemName: Constants.Images.earthquakeMapPinSystemName)
-                    //                                    .font(.title2)
-                    //                                    .foregroundColor(getMarkerColor(magnitude: earthquake.originalMagnitude))
-                    //                                Text(earthquake.simplifiedTitle)
-                    //                                    .font(.caption)
-                    //                            }
-                    //                        }
-                    //                    }
-                    Marker(
-                        earthquake.simplifiedTitle,
-                        systemImage: Constants.Images.earthquakeMapPinSystemName,
-                        coordinate: getCoordinate(earthquake: earthquake))
-                    .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
-                    .tag(earthquake)
+        NavigationStack {
+            ZStack {
+                // MAP
+                MapReader { proxy in
+                    Map(position: $cameraPosition, selection: $selectedEarthquake) {
+                        ForEach(earthquakes) { earthquake in
+                            Marker(
+                                earthquake.simplifiedTitle,
+                                systemImage: Constants.Images.earthquakeMapPinSystemName,
+                                coordinate: getCoordinate(earthquake: earthquake))
+                            .tint(getMarkerColor(magnitude: earthquake.originalMagnitude))
+                            .tag(earthquake)
+                        }
+                        
+                        // MARK: - Search results
+                        ForEach(searchResults, id: \.self) { result in
+                            Marker(item: result)
+                        }
+                    }
+                    .onAppear {
+                        if !locationManager.isAuthorized && !locationManager.isDenied {
+                            locationManager.requestPermission()
+                        }
+                        fetchEarthquakes()
+                    }
+                    .mapStyle(.standard)
+                    .safeAreaInset(edge: .bottom, alignment: .trailing) {
+                        Button {
+                            //TODO: animate center on user location ??
+                            cameraPosition = .region(.userRegion)
+                        } label: {
+                            Image(systemName: Constants.Images.centerLocationIcon)
+                                .foregroundStyle(.white)
+                                .padding(Constants.Design.Dimens.smallMargin)
+                                .background(.blue)
+                                .clipShape(.rect(cornerRadius: Constants.Design.Dimens.mediumMargin))
+                                .padding(.bottom)
+                                .padding(.trailing)
+                        }
+                    }
+                    //TODO: ¿¿??
+//                    .onChange(of: searchResults) {
+//                        cameraPosition = .automatic
+//                    }
+                    .overlay(alignment: .topLeading) {
+                        if let earthquake = selectedEarthquake {
+                            Button(action: {
+                                //TODO: Navigate to detail
+                                print(earthquake.simplifiedTitle)
+                            }) {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(earthquake.simplifiedTitle)
+                                        .font(.headline)
+                                    Text("Magnitud: \(String(format: "%.1f", earthquake.originalMagnitude))")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding(8)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(12)
+                                .shadow(radius: 4)
+                            }
+                            //TODO: .offset(getCardOffset(for: earthquake, proxy: proxy))
+                        }
+                    }
+                    //TODO: revisar dialog error y async
+                    .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
+                        Task {
+                            fetchEarthquakes()
+                        }
+                    })
+                    
+                    // Overlay if location permissions are denied
+                    if locationManager.isDenied {
+                        VStack {
+                            Spacer()
+                            Text("map_location_permissions")
+                                .multilineTextAlignment(.center)
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(12)
+                                .shadow(radius: 4)
+                                .padding()
+                        }
+                    }
                 }
-                
-                // MARK: - Search results
-                ForEach(searchResults, id: \.self) { result in
-                    Marker(item: result)
-                }
-            }
-            .onAppear {
-                fetchEarthquakes()
-            }
-            .mapStyle(.standard)
-            .safeAreaInset(edge: .bottom, alignment: .trailing) {
-                Button {
-                    //TODO: animate center on user location ??
-                    cameraPosition = .region(.userRegion)
-                } label: {
-                    Image(systemName: Constants.Images.centerLocationIcon)
-                        .foregroundStyle(.white)
-                        .padding(Constants.Design.Dimens.smallMargin)
-                        .background(.blue)
-                        .clipShape(.rect(cornerRadius: Constants.Design.Dimens.mediumMargin))
-                        .padding(.bottom)
-                        .padding(.trailing)
-                }
-            }
-            .onChange(of: searchResults) {
-                cameraPosition = .automatic //TODO: ¿¿??
-            }
-            //TODO: revisar dialog error y async
-            .errorLoadingListAlertDialog(error: viewModel.error, errorMessage: viewModel.error?.localizedDescription, retryButtonAction: {
-                Task {
-                    fetchEarthquakes()
-                }
-            })
-            
-            // Overlay if location permissions are denied
-            if locationManager.isDenied {
-                VStack {
-                    Spacer()
-                    Text("map_location_permissions")
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(12)
-                        .shadow(radius: 4)
-                        .padding()
-                }
-            }
-        }
-        .onAppear {
-            if !locationManager.isAuthorized && !locationManager.isDenied {
-                locationManager.requestPermission()
             }
         }
     }
@@ -117,6 +129,16 @@ struct MapView: View {
     
     private func getMarkerColor(magnitude: Double) -> Color {
         return getMagnitudeColorUseCase.getMagnitudeColor(magnitude: magnitude)
+    }
+    
+    //TODO: Revisar para colocar button o borrar
+    private func getCardOffset(for earthquake: Earthquake, proxy: MapProxy) -> CGSize {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: CLLocationDegrees(earthquake.originalCoords[1]),
+            longitude: CLLocationDegrees(earthquake.originalCoords[0])
+        )
+        let point = proxy.convert(coordinate, to: .local)
+        return CGSize(width: point?.x ?? 0, height: (point?.y ?? 0) - 60)
     }
     
     private func fetchEarthquakes() {
