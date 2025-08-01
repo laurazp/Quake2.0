@@ -26,7 +26,8 @@ struct MapView: View {
     }
     
     //TODO: Centrar en ubicación del usuario si hay permisos
-    //TODO: Implementar click en los markers
+    //TODO: Implementar click en los markers (puede no parpadear el botón?)
+    //TODO: Intentar colocar el button justo encima del marker
     
     var body: some View {
         NavigationStack {
@@ -78,6 +79,8 @@ struct MapView: View {
                             Button(action: {
                                 //TODO: Navigate to detail
                                 print(earthquake.simplifiedTitle)
+                                navigateToDetail = true
+//                                coordinator.makeEarthquakeView(for: earthquake)
                             }) {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(earthquake.simplifiedTitle)
@@ -114,6 +117,19 @@ struct MapView: View {
                                 .padding()
                         }
                     }
+                }
+                .navigationDestination(for: Earthquake.self) { selectedEarthquake in
+                    EarthquakeDetailView(earthquake: selectedEarthquake)
+                }
+                
+                if let earthquake = selectedEarthquake {
+                    NavigationLink(
+                        destination: EarthquakeDetailView(earthquake: earthquake),
+                        isActive: $navigateToDetail
+                    ) {
+                        EmptyView()
+                    }
+                    .hidden()
                 }
             }
         }
