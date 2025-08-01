@@ -54,6 +54,13 @@ struct MapView: View {
                             locationManager.requestPermission()
                         }
                         fetchEarthquakes()
+                        
+//                        // Si navegaste y volviste, resetea
+//                        print("navigateToDetail = \(navigateToDetail)")
+//                        if navigateToDetail {
+                        selectedEarthquake = nil
+                        navigateToDetail = false
+//                        }
                     }
                     .mapStyle(.standard)
                     .safeAreaInset(edge: .bottom, alignment: .trailing) {
@@ -75,26 +82,25 @@ struct MapView: View {
 //                        cameraPosition = .automatic
 //                    }
                     .overlay(alignment: .topLeading) {
-                        if let earthquake = selectedEarthquake {
-                            Button(action: {
-                                //TODO: Navigate to detail
-                                print(earthquake.simplifiedTitle)
-                                navigateToDetail = true
-//                                coordinator.makeEarthquakeView(for: earthquake)
-                            }) {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(earthquake.simplifiedTitle)
-                                        .font(.headline)
-                                    Text("Magnitud: \(String(format: "%.1f", earthquake.originalMagnitude))")
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
+                        GeometryReader { geo in
+                            if let earthquake = selectedEarthquake {
+                                Button(action: {
+                                    navigateToDetail = true
+                                }) {
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text(earthquake.simplifiedTitle)
+                                            .font(.headline)
+                                        Text("Magnitud: \(String(format: "%.1f", earthquake.originalMagnitude))")
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .padding(8)
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(12)
+                                    .shadow(radius: 4)
                                 }
-                                .padding(8)
-                                .background(.ultraThinMaterial)
-                                .cornerRadius(12)
-                                .shadow(radius: 4)
+                                .offset(getCardOffset(for: earthquake, proxy: proxy))
                             }
-                            //TODO: .offset(getCardOffset(for: earthquake, proxy: proxy))
                         }
                     }
                     //TODO: revisar dialog error y async
