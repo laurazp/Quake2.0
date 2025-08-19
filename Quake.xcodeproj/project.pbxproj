@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220008E12E54760000EDC0D7 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220008E02E5475F900EDC0D7 /* SortOption.swift */; };
 		220B375C2DBED835006916A0 /* QuakeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B375B2DBED835006916A0 /* QuakeLoader.swift */; };
 		220B375E2DCB520D006916A0 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B375D2DCB5206006916A0 /* TODO.swift */; };
 		220B37612DD292B4006916A0 /* UnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37602DD292B4006916A0 /* UnitsView.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220008E02E5475F900EDC0D7 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		220B375B2DBED835006916A0 /* QuakeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeLoader.swift; sourceTree = "<group>"; };
 		220B375D2DCB5206006916A0 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		220B37602DD292B4006916A0 /* UnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsView.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 		22405C4A2B73858300EBAD6C /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				220008E02E5475F900EDC0D7 /* SortOption.swift */,
 				220B377F2DD8A2CA006916A0 /* FAQItem.swift */,
 				220B37782DD62AE0006916A0 /* LengthUnit.swift */,
 				220B37762DD6282D006916A0 /* MessageType.swift */,
@@ -491,6 +494,7 @@
 				220B37702DD60420006916A0 /* FeedbackView.swift in Sources */,
 				22405C652B73923C00EBAD6C /* UnitsUseCase.swift in Sources */,
 				22405C872B7639D700EBAD6C /* EarthquakesView.swift in Sources */,
+				220008E12E54760000EDC0D7 /* SortOption.swift in Sources */,
 				220B37862DDFD0B9006916A0 /* FiltersSheet.swift in Sources */,
 				22405C5E2B73911800EBAD6C /* GetTimeRangeUseCase.swift in Sources */,
 				220B375C2DBED835006916A0 /* QuakeLoader.swift in Sources */,

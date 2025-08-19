@@ -43,11 +43,8 @@
         }
       }
     },
-    "Apply" : {
-
-    },
     "btn_apply" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -79,11 +76,8 @@
         }
       }
     },
-    "Cancel" : {
-
-    },
     "date_picker_end_date" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -100,7 +94,7 @@
       }
     },
     "date_picker_select_range" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -117,7 +111,7 @@
       }
     },
     "date_picker_start_day" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -286,7 +280,7 @@
       }
     },
     "earthquakes_search_date_range" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -319,6 +313,7 @@
       }
     },
     "earthquakes_sort_by_date" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -335,6 +330,7 @@
       }
     },
     "earthquakes_sort_by_magnitude" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -351,6 +347,7 @@
       }
     },
     "earthquakes_sort_by_place" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -381,12 +378,6 @@
           }
         }
       }
-    },
-    "End Date" : {
-
-    },
-    "Enter place name" : {
-
     },
     "faq_answer_1" : {
       "extractionState" : "manual",
@@ -823,9 +814,6 @@
         }
       }
     },
-    "Filters" : {
-
-    },
     "filters_clear_filters" : {
       "localizations" : {
         "en" : {
@@ -838,6 +826,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Limpiar filtros"
+          }
+        }
+      }
+    },
+    "filters_end_date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End date"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha final"
+          }
+        }
+      }
+    },
+    "filters_enter_place_name" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter place name"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Introducir nombre del lugar"
+          }
+        }
+      }
+    },
+    "filters_search_place" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search place"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar lugar"
+          }
+        }
+      }
+    },
+    "filters_select_dates_range" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select dates range"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionar rango de fechas"
+          }
+        }
+      }
+    },
+    "filters_sheet_title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filters"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtros"
+          }
+        }
+      }
+    },
+    "filters_start_date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start date"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha inicial"
           }
         }
       }
@@ -979,6 +1063,7 @@
       }
     },
     "map_location_permissions" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1095,12 +1180,6 @@
           }
         }
       }
-    },
-    "Search place" : {
-
-    },
-    "Select dates range" : {
-
     },
     "settings_app_info" : {
       "localizations" : {
@@ -1262,9 +1341,6 @@
           }
         }
       }
-    },
-    "Start Date" : {
-
     }
   },
   "version" : "1.0"

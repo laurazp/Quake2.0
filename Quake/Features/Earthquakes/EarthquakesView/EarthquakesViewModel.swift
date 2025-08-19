@@ -18,6 +18,7 @@ class EarthquakesViewModel: ObservableObject {
     @Published var inAlphabeticalOrder = false
     @Published var inAscendingDateOrder = false
     @Published var pageNumber = 0
+    @Published var searchText: String = ""
     @Published var error: Error?
     
     private let getEarthquakesUseCase: GetEarthquakesUseCase

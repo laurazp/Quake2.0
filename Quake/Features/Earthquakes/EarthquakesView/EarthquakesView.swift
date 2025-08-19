@@ -13,10 +13,12 @@ struct EarthquakesView: View {
     
     @State private var isSearchBarShown = false
     @State private var isDatePickerSheetPresented = false
-    @State private var showSortButtons = false
+    //    @State private var showSortButtons = false
     @State private var startDate = Date()
     @State private var endDate = Date()
     @State private var searchText = ""
+    @State private var sortOption: SortOption = .date
+    @State private var sortOrder: SortOrder = .descending
     
     init(viewModel: EarthquakesViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -42,91 +44,71 @@ struct EarthquakesView: View {
                                         isFontSmall: false,
                                         action: {
                                             isDatePickerSheetPresented = true
-//                                        isSearchBarShown = !isSearchBarShown
-                                    })
+                                        })
                                     
                                     // SORT BUTTON
-                                    CustomButton(
-                                        buttonText: String(localized: "earthquakes_sort"),
-                                        buttonImage: Constants.Images.sortEarthquakesIcon,
-                                        isFontSmall: false,
-                                        action: {
-                                        //TODO: Show sort options
-                                        showSortButtons = !showSortButtons
-                                    })
+                                    Menu {
+                                        sortButton(for: .magnitude, title: "Magnitud")
+                                        sortButton(for: .date, title: "Fecha")
+                                        sortButton(for: .name, title: "Lugar")
+                                    } label: {
+                                        CustomButton(
+                                            buttonText: String(localized: "earthquakes_sort"),
+                                            buttonImage: Constants.Images.sortEarthquakesIcon,
+                                            isFontSmall: false,
+                                            action: {}
+                                        )
+                                    }
                                 }
                                 .padding([.horizontal, .top])
                                 
                                 // SORT BUTTONS ROW
-                                if showSortButtons {
-                                    HStack {
-                                        CustomButton(
-                                            buttonText: String(localized: "earthquakes_sort_by_magnitude"),
-                                            buttonImage: viewModel.inIncreasingOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                            isFontSmall: true,
-                                            action: {
-                                            viewModel.orderFeaturesByMagnitude()
-                                            //TODO: Show Clear filters button
-                                        })
-                                        CustomButton(
-                                            buttonText: String(localized: "earthquakes_sort_by_place"),
-                                            buttonImage: viewModel.inAlphabeticalOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                            isFontSmall: true,
-                                            action: {
-                                            viewModel.orderFeaturesByPlace()
-                                        })
-                                        CustomButton(
-                                            buttonText: String(localized: "earthquakes_sort_by_date"),
-                                            buttonImage: viewModel.inAscendingDateOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                            isFontSmall: true,
-                                            action: {
-                                            viewModel.orderFeaturesByDate()
-                                        })
-                                    }
-                                    .padding(.horizontal)
-                                }
+                                //                                if showSortButtons {
+                                //                                    HStack {
+                                //                                        CustomButton(
+                                //                                            buttonText: String(localized: "earthquakes_sort_by_magnitude"),
+                                //                                            buttonImage: viewModel.inIncreasingOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
+                                //                                            isFontSmall: true,
+                                //                                            action: {
+                                //                                                viewModel.orderFeaturesByMagnitude()
+                                //                                            })
+                                //                                        CustomButton(
+                                //                                            buttonText: String(localized: "earthquakes_sort_by_place"),
+                                //                                            buttonImage: viewModel.inAlphabeticalOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
+                                //                                            isFontSmall: true,
+                                //                                            action: {
+                                //                                                viewModel.orderFeaturesByPlace()
+                                //                                            })
+                                //                                        CustomButton(
+                                //                                            buttonText: String(localized: "earthquakes_sort_by_date"),
+                                //                                            buttonImage: viewModel.inAscendingDateOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
+                                //                                            isFontSmall: true,
+                                //                                            action: {
+                                //                                                viewModel.orderFeaturesByDate()
+                                //                                            })
+                                //                                    }
+                                //                                    .padding(.horizontal)
+                                //                                }
                                 
                                 // CLEAR FILTERS BUTTON
                                 if viewModel.isFiltering {
                                     HStack {
                                         Spacer()
-                                    CustomButton(
-                                        buttonText: String(localized: "filters_clear_filters"),
-                                        buttonImage: Constants.Images.clearFiltersIcon,
-                                        isFontSmall: true,
-                                        action: {
-                                            Task {
-                                                viewModel.isFiltering = false
-                                                viewModel.pageNumber = 0
-                                                viewModel.filteredEarthquakes = []
-                                                await viewModel.getLatestEarthquakes()
+                                        CustomButton(
+                                            buttonText: String(localized: "filters_clear_filters"),
+                                            buttonImage: Constants.Images.clearFiltersIcon,
+                                            isFontSmall: true,
+                                            action: {
+                                                Task {
+                                                    viewModel.isFiltering = false
+                                                    viewModel.pageNumber = 0
+                                                    viewModel.filteredEarthquakes = []
+                                                    await viewModel.getLatestEarthquakes()
+                                                }
                                             }
-                                        }
-                                    )
+                                        )
                                     }
                                 }
-                                
-//                                HStack {
-//                                    // SEARCH BAR WITH DATE PICKER
-//                                    if isSearchBarShown {
-//                                        Button(action: {
-//                                            isDatePickerSheetPresented = true
-//                                        }) {
-//                                            HStack {
-//                                                Image(systemName: Constants.Images.searchDatesIcon)
-//                                                Text("earthquakes_search_date_range")
-//                                                    .foregroundColor(.gray)
-//                                                Spacer()
-//                                            }
-//                                            .padding()
-//                                            .background(Color(.systemGray6))
-//                                            .cornerRadius(16)
-//                                        }
-//                                        .padding()
-//                                        .frame(height: 40)
-//                                        .foregroundStyle(Color(.gray))
-//                                    }
-//                                }
                             }
                             
                             // EARTHQUAKES LIST
@@ -151,7 +133,6 @@ struct EarthquakesView: View {
                             }
                             .navigationTitle("earthquakes_title")
                             .listStyle(.plain)
-                            
                         }
                         .sheet(isPresented: $isDatePickerSheetPresented) {
                             // DATE PICKER SHEET
@@ -205,8 +186,37 @@ struct EarthquakesView: View {
         }
     }
     
+    // MARK: - Functions
     private func createRow(for earthquake: Earthquake) -> some View {
         EarthquakeItemView(earthquake: earthquake, isExpanded: false)
+    }
+    
+    @ViewBuilder
+    private func sortButton(for option: SortOption, title: String) -> some View {
+        Button {
+            if sortOption == option {
+                sortOrder.toggle()
+            } else {
+                sortOption = option
+                sortOrder = .ascending
+            }
+            switch sortOption {
+            case .magnitude:
+                viewModel.orderFeaturesByMagnitude()
+            case .date:
+                viewModel.orderFeaturesByDate()
+            case .name:
+                viewModel.orderFeaturesByPlace()
+            }
+        } label: {
+            HStack {
+                Text(title)
+                if sortOption == option {
+                    Image(systemName: sortOrder == .ascending ? "arrow.up" : "arrow.down")
+                        .font(.caption)
+                }
+            }
+        }
     }
 }
 
