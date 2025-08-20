@@ -27,6 +27,7 @@ class EarthquakesViewModel: ObservableObject {
     
     private(set) var lastStartDate: Date = Date()
     private(set) var lastEndDate: Date = Date()
+    private(set) var placeQuery: String = ""
     
     init(getEarthquakesUseCase: GetEarthquakesUseCase,
          featureToEarthquakeMapper: FeatureToEarthquakeMapper) {
@@ -77,19 +78,20 @@ class EarthquakesViewModel: ObservableObject {
     // MARK: - Filtering
     
     @MainActor
-    func filterEarthquakesByDate(selectedDates: [Date]) async {
+    func filterEarthquakesByDate(selectedDates: [Date], placeQuery: String) async {
         isFiltering = true
         pageNumber = 0
         filteredEarthquakes = [] // Clean list before adding new data
         hasMoreData = true
         lastStartDate = selectedDates[0]
         lastEndDate = selectedDates.count > 1 ? selectedDates[1] : selectedDates[0]
+        self.placeQuery = placeQuery
         
-        await getFilteredEarthquakesByDate(selectedDates: selectedDates)
+        await getFilteredEarthquakesByDate(selectedDates: selectedDates, placeQuery: placeQuery)
     }
     
     @MainActor
-    private func getFilteredEarthquakesByDate(selectedDates: [Date]) async {
+    private func getFilteredEarthquakesByDate(selectedDates: [Date], placeQuery: String) async {
         guard selectedDates.count >= 1 else { return }
         
         let leftDate = selectedDates[0]
@@ -97,12 +99,19 @@ class EarthquakesViewModel: ObservableObject {
         let offset = pageNumber * pageSize + 1
         
         do {
-            let earthquakes = try await getEarthquakesUseCase.getEarthquakesBetweenDates(
+            var earthquakes = try await getEarthquakesUseCase.getEarthquakesBetweenDates(
                 leftDate,
                 rightDate,
                 offset: offset,
                 pageSize: pageSize
             )
+            
+            // Filter by place if query is not empty
+            if !placeQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                earthquakes = earthquakes.filter { eq in
+                    eq.place.localizedCaseInsensitiveContains(placeQuery)
+                }
+            }
             
             if pageNumber == 0 {
                 filteredEarthquakes = earthquakes
@@ -120,7 +129,7 @@ class EarthquakesViewModel: ObservableObject {
     func loadMoreFilteredEarthquakes() async {
         guard isFiltering, hasMoreData else { return }
         pageNumber += 1
-        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate])
+        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate], placeQuery: "")
     }
     
     func endFiltering() {

@@ -13,7 +13,6 @@ struct EarthquakesView: View {
     
     @State private var isSearchBarShown = false
     @State private var isDatePickerSheetPresented = false
-    //    @State private var showSortButtons = false
     @State private var startDate = Date()
     @State private var endDate = Date()
     @State private var searchText = ""
@@ -34,7 +33,6 @@ struct EarthquakesView: View {
                         VStack(alignment: .leading) {
                             // FILTERS VSTACK
                             VStack(alignment: .leading, spacing: 24) {
-                                // FILTER AND SORT ROW
                                 HStack {
                                     Spacer()
                                     // FILTER BUTTON
@@ -42,53 +40,27 @@ struct EarthquakesView: View {
                                         buttonText: String(localized: "earthquakes_filter"),
                                         buttonImage: Constants.Images.filterEarthquakesIcon,
                                         isFontSmall: false,
+                                        isIconRed: false,
                                         action: {
                                             isDatePickerSheetPresented = true
                                         })
                                     
                                     // SORT BUTTON
                                     Menu {
-                                        sortButton(for: .magnitude, title: "Magnitud")
-                                        sortButton(for: .date, title: "Fecha")
-                                        sortButton(for: .name, title: "Lugar")
+                                        sortButton(for: .magnitude, title: String(localized: "earthquake_magnitude"))
+                                        sortButton(for: .date, title: String(localized: "earthquake_date"))
+                                        sortButton(for: .name, title: String(localized: "earthquake_place"))
                                     } label: {
                                         CustomButton(
                                             buttonText: String(localized: "earthquakes_sort"),
                                             buttonImage: Constants.Images.sortEarthquakesIcon,
                                             isFontSmall: false,
+                                            isIconRed: false,
                                             action: {}
                                         )
                                     }
                                 }
                                 .padding([.horizontal, .top])
-                                
-                                // SORT BUTTONS ROW
-                                //                                if showSortButtons {
-                                //                                    HStack {
-                                //                                        CustomButton(
-                                //                                            buttonText: String(localized: "earthquakes_sort_by_magnitude"),
-                                //                                            buttonImage: viewModel.inIncreasingOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                //                                            isFontSmall: true,
-                                //                                            action: {
-                                //                                                viewModel.orderFeaturesByMagnitude()
-                                //                                            })
-                                //                                        CustomButton(
-                                //                                            buttonText: String(localized: "earthquakes_sort_by_place"),
-                                //                                            buttonImage: viewModel.inAlphabeticalOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                //                                            isFontSmall: true,
-                                //                                            action: {
-                                //                                                viewModel.orderFeaturesByPlace()
-                                //                                            })
-                                //                                        CustomButton(
-                                //                                            buttonText: String(localized: "earthquakes_sort_by_date"),
-                                //                                            buttonImage: viewModel.inAscendingDateOrder ? Constants.Images.arrowDownIcon : Constants.Images.arrowUpIcon,
-                                //                                            isFontSmall: true,
-                                //                                            action: {
-                                //                                                viewModel.orderFeaturesByDate()
-                                //                                            })
-                                //                                    }
-                                //                                    .padding(.horizontal)
-                                //                                }
                                 
                                 // CLEAR FILTERS BUTTON
                                 if viewModel.isFiltering {
@@ -98,6 +70,7 @@ struct EarthquakesView: View {
                                             buttonText: String(localized: "filters_clear_filters"),
                                             buttonImage: Constants.Images.clearFiltersIcon,
                                             isFontSmall: true,
+                                            isIconRed: true,
                                             action: {
                                                 Task {
                                                     viewModel.isFiltering = false
@@ -108,10 +81,11 @@ struct EarthquakesView: View {
                                             }
                                         )
                                     }
+                                    .padding(.trailing, 16)
                                 }
                             }
                             
-                            // EARTHQUAKES LIST
+                            //MARK: EARTHQUAKES LIST
                             List(viewModel.isFiltering ? viewModel.filteredEarthquakes : viewModel.earthquakes) { earthquake in
                                 createRow(for: earthquake)
                                     .id(earthquake.id)
@@ -119,6 +93,7 @@ struct EarthquakesView: View {
                                         if viewModel.isFiltering {
                                             if earthquake == viewModel.filteredEarthquakes.last, viewModel.hasMoreData {
                                                 Task {
+                                                    //TODO: Revisar por qué no carga nuevos si filtra u ordena (si ha filtrado y quitas filtros, tampoco varga más)
                                                     await viewModel.loadMoreFilteredEarthquakes()
                                                 }
                                             }
@@ -143,8 +118,8 @@ struct EarthquakesView: View {
                                 isPresented: $isDatePickerSheetPresented,
                                 onApply: {
                                     Task {
-                                        await viewModel.filterEarthquakesByDate(selectedDates: [startDate, endDate])
-                                        //TODO: viewModel.filterEarthquakesByPlace(searchText: searchText)
+                                        await viewModel.filterEarthquakesByDate(selectedDates: [startDate, endDate], placeQuery: searchText)
+//                                        await viewModel.filterEarthquakesByPlace(searchText: searchText)
                                         isDatePickerSheetPresented = false
                                         isSearchBarShown = false
                                         //TODO: Is it better to show dates instead of hidding the search bar?
