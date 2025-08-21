@@ -63,7 +63,7 @@ struct EarthquakesView: View {
                                 .padding([.horizontal, .top])
                                 
                                 // CLEAR FILTERS BUTTON
-                                if viewModel.isFiltering {
+                                if viewModel.isFiltering || viewModel.isSorted {
                                     HStack {
                                         Spacer()
                                         CustomButton(
@@ -82,7 +82,7 @@ struct EarthquakesView: View {
                                 }
                             }
                             
-                            //MARK: EARTHQUAKES LIST
+                            //MARK: Earthquakes list
                             List(viewModel.isFiltering ? viewModel.filteredEarthquakes : viewModel.earthquakes) { earthquake in
                                 createRow(for: earthquake)
                                     .id(earthquake.id)
@@ -117,7 +117,6 @@ struct EarthquakesView: View {
                                         await viewModel.filterEarthquakes(selectedDates: [startDate, endDate], placeQuery: searchText)
                                         isDatePickerSheetPresented = false
                                         isSearchBarShown = false
-                                        //TODO: Is it better to show dates instead of hidding the search bar?
                                     }
                                 }
                             )

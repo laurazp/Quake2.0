@@ -10,13 +10,14 @@ import Foundation
 class EarthquakesViewModel: ObservableObject {
     @Published var earthquakes = [Earthquake]()
     @Published var filteredEarthquakes = [Earthquake]()
-    @Published var isFiltering = false
-    @Published var isLoading = false
-    @Published var isLoadingPage = false
-    @Published var hasMoreData = true
-    @Published var inIncreasingOrder = false
-    @Published var inAlphabeticalOrder = false
-    @Published var inAscendingDateOrder = false
+    @Published var isFiltering: Bool = false
+    @Published var isSorted: Bool = false
+    @Published var isLoading: Bool = false
+    @Published var isLoadingPage: Bool = false
+    @Published var hasMoreData: Bool = true
+    @Published var inIncreasingOrder: Bool = false
+    @Published var inAlphabeticalOrder: Bool = false
+    @Published var inAscendingDateOrder: Bool = false
     @Published var pageNumber = 0
     @Published var searchText: String = ""
     @Published var error: Error?
@@ -134,8 +135,10 @@ class EarthquakesViewModel: ObservableObject {
         await getFilteredEarthquakes(selectedDates: [lastStartDate, lastEndDate], placeQuery: placeQuery)
     }
     
+    @MainActor
     func clearFiltersAndReload() async {
         isFiltering = false
+        isSorted = false
         pageNumber = 0
         hasMoreData = true
         placeQuery = ""
@@ -152,8 +155,7 @@ class EarthquakesViewModel: ObservableObject {
         } else {
             earthquakes.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
         }
-        //TODO: Show clear filters button
-        //        isFiltering = true
+        isSorted = true
     }
     
     func orderFeaturesByPlace() {
@@ -174,6 +176,7 @@ class EarthquakesViewModel: ObservableObject {
                 inAlphabeticalOrder = false
             }
         }
+        isSorted = true
     }
     
     func orderFeaturesByDate() {
@@ -194,5 +197,6 @@ class EarthquakesViewModel: ObservableObject {
                 inAscendingDateOrder = false
             }
         }
+        isSorted = true
     }
 }
