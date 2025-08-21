@@ -23,4 +23,9 @@ struct UnitsUseCase {
     func getSelectedUnit() -> String {
         return UserDefaults.standard.retrieveUnits()
     }
+    
+    func getSelectedLengthUnit() -> LengthUnit {
+        let stored = UserDefaults.standard.retrieveUnits()
+        return LengthUnit(rawValue: stored) ?? .kilometers
+    }
 }

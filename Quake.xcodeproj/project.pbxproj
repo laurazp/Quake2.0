@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		220008E12E54760000EDC0D7 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220008E02E5475F900EDC0D7 /* SortOption.swift */; };
+		220008E32E5762DA00EDC0D7 /* GetLocalizedPlaceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220008E22E5762C200EDC0D7 /* GetLocalizedPlaceFormatter.swift */; };
 		220B375C2DBED835006916A0 /* QuakeLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B375B2DBED835006916A0 /* QuakeLoader.swift */; };
 		220B375E2DCB520D006916A0 /* TODO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B375D2DCB5206006916A0 /* TODO.swift */; };
 		220B37612DD292B4006916A0 /* UnitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B37602DD292B4006916A0 /* UnitsView.swift */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		220008E02E5475F900EDC0D7 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		220008E22E5762C200EDC0D7 /* GetLocalizedPlaceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocalizedPlaceFormatter.swift; sourceTree = "<group>"; };
 		220B375B2DBED835006916A0 /* QuakeLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuakeLoader.swift; sourceTree = "<group>"; };
 		220B375D2DCB5206006916A0 /* TODO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODO.swift; sourceTree = "<group>"; };
 		220B37602DD292B4006916A0 /* UnitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsView.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 		22405C692B75644700EBAD6C /* Formatters */ = {
 			isa = PBXGroup;
 			children = (
+				220008E22E5762C200EDC0D7 /* GetLocalizedPlaceFormatter.swift */,
 				22405C6A2B75648900EBAD6C /* GetDateFormatter.swift */,
 				22405C6C2B7564B300EBAD6C /* GetFormattedCoordsFormatter.swift */,
 				22405C6E2B7564D200EBAD6C /* GetSimplifiedTitleFormatter.swift */,
@@ -521,6 +524,7 @@
 				220B37842DDF23C7006916A0 /* CustomLink.swift in Sources */,
 				22636BBD2E30FC0800559107 /* SettingsViewModel.swift in Sources */,
 				220B37882DE3B972006916A0 /* CustomButton.swift in Sources */,
+				220008E32E5762DA00EDC0D7 /* GetLocalizedPlaceFormatter.swift in Sources */,
 				22405C952B7933C300EBAD6C /* SettingsView.swift in Sources */,
 				22405C8C2B7640B500EBAD6C /* EarthquakeItemView.swift in Sources */,
 				220B37632DD29D44006916A0 /* LocationServicesView.swift in Sources */,

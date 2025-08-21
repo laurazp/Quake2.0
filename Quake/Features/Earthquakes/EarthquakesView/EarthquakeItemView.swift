@@ -9,18 +9,22 @@ import SwiftUI
 
 struct EarthquakeItemView: View {
     let getMagnitudeColorUseCase = GetMagnitudeColorUseCase()
+    let unitsUseCase = UnitsUseCase()
+    let getLocalizedPlaceFormatter = GetLocalizedPlaceFormatter()
     let earthquake: Earthquake
     @State var isExpanded: Bool
     @State private var navigate = false
     
     var body: some View {
+        let currentUnit = unitsUseCase.getSelectedLengthUnit()
+        
         DisclosureGroup(
             isExpanded: $isExpanded,
             content: {
                 VStack(alignment: .leading, spacing: Constants.Design.Dimens.semiLargeMargin) {
                     // DROPDOWN EARTHQUAKE DETAILS
                     ForEach([
-                        ("earthquake_place", earthquake.place),
+                        ("earthquake_place", getLocalizedPlaceFormatter.getLocalizedPlace(earthquake.place, unit: currentUnit)),
                         ("earthquake_date", earthquake.date),
                         ("earthquake_tsunami", earthquake.tsunami),
                         ("earthquake_coords", earthquake.formattedCoords),
