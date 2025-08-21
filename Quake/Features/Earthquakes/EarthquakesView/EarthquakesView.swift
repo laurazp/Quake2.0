@@ -93,7 +93,7 @@ struct EarthquakesView: View {
                                         if viewModel.isFiltering {
                                             if earthquake == viewModel.filteredEarthquakes.last, viewModel.hasMoreData {
                                                 Task {
-                                                    //TODO: Revisar por qué no carga nuevos si filtra u ordena (si ha filtrado y quitas filtros, tampoco varga más)
+                                                    //TODO: Revisar por qué no carga nuevos si filtra u ordena (si ha filtrado y quitas filtros, tampoco carga más)
                                                     await viewModel.loadMoreFilteredEarthquakes()
                                                 }
                                             }
@@ -118,8 +118,7 @@ struct EarthquakesView: View {
                                 isPresented: $isDatePickerSheetPresented,
                                 onApply: {
                                     Task {
-                                        await viewModel.filterEarthquakesByDate(selectedDates: [startDate, endDate], placeQuery: searchText)
-//                                        await viewModel.filterEarthquakesByPlace(searchText: searchText)
+                                        await viewModel.filterEarthquakes(selectedDates: [startDate, endDate], placeQuery: searchText)
                                         isDatePickerSheetPresented = false
                                         isSearchBarShown = false
                                         //TODO: Is it better to show dates instead of hidding the search bar?

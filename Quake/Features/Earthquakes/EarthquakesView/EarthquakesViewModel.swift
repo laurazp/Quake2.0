@@ -78,7 +78,7 @@ class EarthquakesViewModel: ObservableObject {
     // MARK: - Filtering
     
     @MainActor
-    func filterEarthquakesByDate(selectedDates: [Date], placeQuery: String) async {
+    func filterEarthquakes(selectedDates: [Date], placeQuery: String) async {
         isFiltering = true
         pageNumber = 0
         filteredEarthquakes = [] // Clean list before adding new data
@@ -129,7 +129,7 @@ class EarthquakesViewModel: ObservableObject {
     func loadMoreFilteredEarthquakes() async {
         guard isFiltering, hasMoreData else { return }
         pageNumber += 1
-        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate], placeQuery: "")
+        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate], placeQuery: placeQuery)
     }
     
     func endFiltering() {
@@ -146,9 +146,9 @@ class EarthquakesViewModel: ObservableObject {
             earthquakes.sort(by: { inIncreasingOrder ? $0.formattedMagnitude < $1.formattedMagnitude : $0.formattedMagnitude > $1.formattedMagnitude })
         }
         //TODO: Show clear filters button
-//        isFiltering = true
+        //        isFiltering = true
     }
-     
+    
     func orderFeaturesByPlace() {
         if (!inAlphabeticalOrder) {
             if (isFiltering) {
@@ -168,7 +168,7 @@ class EarthquakesViewModel: ObservableObject {
             }
         }
     }
-     
+    
     func orderFeaturesByDate() {
         if (!inAscendingDateOrder) {
             if (isFiltering) {
