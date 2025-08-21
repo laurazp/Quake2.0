@@ -73,10 +73,7 @@ struct EarthquakesView: View {
                                             isIconRed: true,
                                             action: {
                                                 Task {
-                                                    viewModel.isFiltering = false
-                                                    viewModel.pageNumber = 0
-                                                    viewModel.filteredEarthquakes = []
-                                                    await viewModel.getLatestEarthquakes()
+                                                    await viewModel.clearFiltersAndReload()
                                                 }
                                             }
                                         )
@@ -91,14 +88,13 @@ struct EarthquakesView: View {
                                     .id(earthquake.id)
                                     .onAppear {
                                         if viewModel.isFiltering {
-                                            if earthquake == viewModel.filteredEarthquakes.last, viewModel.hasMoreData {
+                                            if earthquake.id == viewModel.filteredEarthquakes.last?.id, viewModel.hasMoreData {
                                                 Task {
-                                                    //TODO: Revisar por qué no carga nuevos si filtra u ordena (si ha filtrado y quitas filtros, tampoco carga más)
                                                     await viewModel.loadMoreFilteredEarthquakes()
                                                 }
                                             }
                                         } else {
-                                            if earthquake == viewModel.earthquakes.last, viewModel.hasMoreData {
+                                            if earthquake.id == viewModel.earthquakes.last?.id, viewModel.hasMoreData {
                                                 Task {
                                                     await viewModel.getLatestEarthquakes(isPaginating: true)
                                                 }
@@ -186,7 +182,7 @@ struct EarthquakesView: View {
             HStack {
                 Text(title)
                 if sortOption == option {
-                    Image(systemName: sortOrder == .ascending ? "arrow.up" : "arrow.down")
+                    Image(systemName: sortOrder == .ascending ? "arrow.down" : "arrow.up")
                         .font(.caption)
                 }
             }

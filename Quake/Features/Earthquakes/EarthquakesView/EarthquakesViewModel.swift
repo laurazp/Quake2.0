@@ -83,15 +83,16 @@ class EarthquakesViewModel: ObservableObject {
         pageNumber = 0
         filteredEarthquakes = [] // Clean list before adding new data
         hasMoreData = true
+        
         lastStartDate = selectedDates[0]
         lastEndDate = selectedDates.count > 1 ? selectedDates[1] : selectedDates[0]
         self.placeQuery = placeQuery
         
-        await getFilteredEarthquakesByDate(selectedDates: selectedDates, placeQuery: placeQuery)
+        await getFilteredEarthquakes(selectedDates: [lastStartDate, lastEndDate], placeQuery: placeQuery)
     }
     
     @MainActor
-    private func getFilteredEarthquakesByDate(selectedDates: [Date], placeQuery: String) async {
+    private func getFilteredEarthquakes(selectedDates: [Date], placeQuery: String) async {
         guard selectedDates.count >= 1 else { return }
         
         let leftDate = selectedDates[0]
@@ -99,27 +100,28 @@ class EarthquakesViewModel: ObservableObject {
         let offset = pageNumber * pageSize + 1
         
         do {
-            var earthquakes = try await getEarthquakesUseCase.getEarthquakesBetweenDates(
+            let earthquakes = try await getEarthquakesUseCase.getEarthquakesBetweenDates(
                 leftDate,
                 rightDate,
                 offset: offset,
                 pageSize: pageSize
             )
             
-            // Filter by place if query is not empty
+            hasMoreData = earthquakes.count == pageSize
+            
+            // Apply place query filter (if exists) over the new earthquakes
+            var earthquakesToAppend = earthquakes
             if !placeQuery.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                earthquakes = earthquakes.filter { eq in
+                earthquakesToAppend = earthquakes.filter { eq in
                     eq.place.localizedCaseInsensitiveContains(placeQuery)
                 }
             }
             
             if pageNumber == 0 {
-                filteredEarthquakes = earthquakes
+                filteredEarthquakes = earthquakesToAppend
             } else {
-                filteredEarthquakes.append(contentsOf: earthquakes)
+                filteredEarthquakes.append(contentsOf: earthquakesToAppend)
             }
-            
-            hasMoreData = earthquakes.count == pageSize //TODO: Check for last page
         } catch {
             self.error = error
         }
@@ -129,11 +131,16 @@ class EarthquakesViewModel: ObservableObject {
     func loadMoreFilteredEarthquakes() async {
         guard isFiltering, hasMoreData else { return }
         pageNumber += 1
-        await getFilteredEarthquakesByDate(selectedDates: [lastStartDate, lastEndDate], placeQuery: placeQuery)
+        await getFilteredEarthquakes(selectedDates: [lastStartDate, lastEndDate], placeQuery: placeQuery)
     }
     
-    func endFiltering() {
+    func clearFiltersAndReload() async {
         isFiltering = false
+        pageNumber = 0
+        hasMoreData = true
+        placeQuery = ""
+        filteredEarthquakes = []
+        await getLatestEarthquakes(isPaginating: false)
     }
     
     // MARK: - Ordering
@@ -150,8 +157,8 @@ class EarthquakesViewModel: ObservableObject {
     }
     
     func orderFeaturesByPlace() {
-        if (!inAlphabeticalOrder) {
-            if (isFiltering) {
+        if !inAlphabeticalOrder {
+            if isFiltering {
                 filteredEarthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
                 inAlphabeticalOrder = true
             } else {
@@ -159,11 +166,11 @@ class EarthquakesViewModel: ObservableObject {
                 inAlphabeticalOrder = true
             }
         } else {
-            if (isFiltering) {
-                filteredEarthquakes.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+            if isFiltering {
+                filteredEarthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) > $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
                 inAlphabeticalOrder = false
             } else {
-                earthquakes.sort(by: { $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) < $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
+                earthquakes.sort(by: { $0.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) > $1.simplifiedTitle.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current) })
                 inAlphabeticalOrder = false
             }
         }
